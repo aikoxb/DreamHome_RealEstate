@@ -1,0 +1,18 @@
+#Ignores the following
+
+# Credentials
+.env
+
+# Visual Studio settings - Auto-built by Visual Studio
+.vs/
+
+# Build Output Folders - Auto-built by Visual Studio
+bin/
+obj/
+
+# User-Specific Files - Auto-built by Visual Studio
+*.user
+*.suo
+
+# Logs - Auto-built by Visual Studio
+*.log
