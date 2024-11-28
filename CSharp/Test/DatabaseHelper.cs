@@ -1,4 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using dotenv.net; // For loading environment variables from a .env file
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,8 +16,17 @@ namespace Test
         // Constructor to initialize the connection string
         public DatabaseHelper()
         {
-            connectionString = "User Id=<username>;Password=<password>;Data Source=199.212.26.208:1521/SQLD";
+            // Load the .env file
+            DotEnv.Load();
 
+            // Retrieve the connection string
+            connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+
+            // Validate connection string
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                throw new Exception("Connection string is not set. Check your .env file.");
+            }
         }
 
         // Method to test the connection

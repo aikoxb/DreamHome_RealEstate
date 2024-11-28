@@ -3,6 +3,9 @@
 # Credentials
 .env
 
+# Ignore NuGet packages folder
+packages/
+
 # Visual Studio settings - Auto-built by Visual Studio
 .vs/
 
