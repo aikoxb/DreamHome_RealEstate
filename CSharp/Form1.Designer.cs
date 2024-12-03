@@ -30,21 +30,21 @@
         {
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabStaff = new System.Windows.Forms.TabPage();
-            this.tabBranch = new System.Windows.Forms.TabPage();
-            this.tabClient = new System.Windows.Forms.TabPage();
-            this.buttonLoadStaff = new System.Windows.Forms.Button();
-            this.buttonLoadBranch = new System.Windows.Forms.Button();
-            this.buttonLoadClient = new System.Windows.Forms.Button();
-            this.dataGridViewClient = new System.Windows.Forms.DataGridView();
-            this.dataGridViewBranch = new System.Windows.Forms.DataGridView();
             this.dataGridViewStaff = new System.Windows.Forms.DataGridView();
+            this.buttonLoadStaff = new System.Windows.Forms.Button();
+            this.tabBranch = new System.Windows.Forms.TabPage();
+            this.dataGridViewBranch = new System.Windows.Forms.DataGridView();
+            this.buttonLoadBranch = new System.Windows.Forms.Button();
+            this.tabClient = new System.Windows.Forms.TabPage();
+            this.dataGridViewClient = new System.Windows.Forms.DataGridView();
+            this.buttonLoadClient = new System.Windows.Forms.Button();
             this.tabControlMain.SuspendLayout();
             this.tabStaff.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStaff)).BeginInit();
             this.tabBranch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBranch)).BeginInit();
             this.tabClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClient)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBranch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStaff)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -70,6 +70,26 @@
             this.tabStaff.Text = "Staff Menu";
             this.tabStaff.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewStaff
+            // 
+            this.dataGridViewStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewStaff.Location = new System.Drawing.Point(142, 57);
+            this.dataGridViewStaff.Name = "dataGridViewStaff";
+            this.dataGridViewStaff.RowHeadersWidth = 51;
+            this.dataGridViewStaff.RowTemplate.Height = 24;
+            this.dataGridViewStaff.Size = new System.Drawing.Size(607, 319);
+            this.dataGridViewStaff.TabIndex = 1;
+            // 
+            // buttonLoadStaff
+            // 
+            this.buttonLoadStaff.Location = new System.Drawing.Point(40, 57);
+            this.buttonLoadStaff.Name = "buttonLoadStaff";
+            this.buttonLoadStaff.Size = new System.Drawing.Size(75, 23);
+            this.buttonLoadStaff.TabIndex = 0;
+            this.buttonLoadStaff.Text = "Load Staff";
+            this.buttonLoadStaff.UseVisualStyleBackColor = true;
+            this.buttonLoadStaff.Click += new System.EventHandler(this.buttonLoadStaff_Click);
+            // 
             // tabBranch
             // 
             this.tabBranch.Controls.Add(this.dataGridViewBranch);
@@ -82,26 +102,15 @@
             this.tabBranch.Text = "Branch Menu";
             this.tabBranch.UseVisualStyleBackColor = true;
             // 
-            // tabClient
+            // dataGridViewBranch
             // 
-            this.tabClient.Controls.Add(this.dataGridViewClient);
-            this.tabClient.Controls.Add(this.buttonLoadClient);
-            this.tabClient.Location = new System.Drawing.Point(4, 25);
-            this.tabClient.Name = "tabClient";
-            this.tabClient.Size = new System.Drawing.Size(768, 397);
-            this.tabClient.TabIndex = 2;
-            this.tabClient.Text = "Client Menu";
-            this.tabClient.UseVisualStyleBackColor = true;
-            // 
-            // buttonLoadStaff
-            // 
-            this.buttonLoadStaff.Location = new System.Drawing.Point(40, 57);
-            this.buttonLoadStaff.Name = "buttonLoadStaff";
-            this.buttonLoadStaff.Size = new System.Drawing.Size(75, 23);
-            this.buttonLoadStaff.TabIndex = 0;
-            this.buttonLoadStaff.Text = "Load Staff";
-            this.buttonLoadStaff.UseVisualStyleBackColor = true;
-            this.buttonLoadStaff.Click += new System.EventHandler(this.buttonLoadStaff_Click);
+            this.dataGridViewBranch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewBranch.Location = new System.Drawing.Point(176, 40);
+            this.dataGridViewBranch.Name = "dataGridViewBranch";
+            this.dataGridViewBranch.RowHeadersWidth = 51;
+            this.dataGridViewBranch.RowTemplate.Height = 24;
+            this.dataGridViewBranch.Size = new System.Drawing.Size(575, 339);
+            this.dataGridViewBranch.TabIndex = 1;
             // 
             // buttonLoadBranch
             // 
@@ -113,6 +122,27 @@
             this.buttonLoadBranch.UseVisualStyleBackColor = true;
             this.buttonLoadBranch.Click += new System.EventHandler(this.buttonLoadBranch_Click);
             // 
+            // tabClient
+            // 
+            this.tabClient.Controls.Add(this.dataGridViewClient);
+            this.tabClient.Controls.Add(this.buttonLoadClient);
+            this.tabClient.Location = new System.Drawing.Point(4, 25);
+            this.tabClient.Name = "tabClient";
+            this.tabClient.Size = new System.Drawing.Size(768, 397);
+            this.tabClient.TabIndex = 2;
+            this.tabClient.Text = "Client Menu";
+            this.tabClient.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewClient
+            // 
+            this.dataGridViewClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewClient.Location = new System.Drawing.Point(159, 41);
+            this.dataGridViewClient.Name = "dataGridViewClient";
+            this.dataGridViewClient.RowHeadersWidth = 51;
+            this.dataGridViewClient.RowTemplate.Height = 24;
+            this.dataGridViewClient.Size = new System.Drawing.Size(594, 343);
+            this.dataGridViewClient.TabIndex = 1;
+            // 
             // buttonLoadClient
             // 
             this.buttonLoadClient.Location = new System.Drawing.Point(46, 41);
@@ -122,36 +152,6 @@
             this.buttonLoadClient.Text = "Load Client";
             this.buttonLoadClient.UseVisualStyleBackColor = true;
             this.buttonLoadClient.Click += new System.EventHandler(this.buttonLoadClient_Click);
-            // 
-            // dataGridViewClient
-            // 
-            this.dataGridViewClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewClient.Location = new System.Drawing.Point(301, 41);
-            this.dataGridViewClient.Name = "dataGridViewClient";
-            this.dataGridViewClient.RowHeadersWidth = 51;
-            this.dataGridViewClient.RowTemplate.Height = 24;
-            this.dataGridViewClient.Size = new System.Drawing.Size(434, 329);
-            this.dataGridViewClient.TabIndex = 1;
-            // 
-            // dataGridViewBranch
-            // 
-            this.dataGridViewBranch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewBranch.Location = new System.Drawing.Point(346, 40);
-            this.dataGridViewBranch.Name = "dataGridViewBranch";
-            this.dataGridViewBranch.RowHeadersWidth = 51;
-            this.dataGridViewBranch.RowTemplate.Height = 24;
-            this.dataGridViewBranch.Size = new System.Drawing.Size(346, 266);
-            this.dataGridViewBranch.TabIndex = 1;
-            // 
-            // dataGridViewStaff
-            // 
-            this.dataGridViewStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewStaff.Location = new System.Drawing.Point(364, 57);
-            this.dataGridViewStaff.Name = "dataGridViewStaff";
-            this.dataGridViewStaff.RowHeadersWidth = 51;
-            this.dataGridViewStaff.RowTemplate.Height = 24;
-            this.dataGridViewStaff.Size = new System.Drawing.Size(359, 245);
-            this.dataGridViewStaff.TabIndex = 1;
             // 
             // Form1
             // 
@@ -163,11 +163,11 @@
             this.Text = "Form1";
             this.tabControlMain.ResumeLayout(false);
             this.tabStaff.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStaff)).EndInit();
             this.tabBranch.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBranch)).EndInit();
             this.tabClient.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClient)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBranch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStaff)).EndInit();
             this.ResumeLayout(false);
 
         }
