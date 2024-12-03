@@ -1,4 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using dotenv.net; //For loading environment variables from a .env file
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,9 +14,25 @@ namespace CSharp
     {
         private string connectionString;
 
-        public DatabaseManager(string username, string password)
+        public DatabaseManager()
         {
-            connectionString = $"User Id={username};Password={password};Data Source=199.212.26.208:1521/SQLD";
+            //Load the .env file
+            DotEnv.Load();
+
+            //Retrieve the environment variables
+            string username = Environment.GetEnvironmentVariable("DB_USERNAME");
+            string password = Environment.GetEnvironmentVariable("DB_PASSWORD");
+            string dataSource = Environment.GetEnvironmentVariable("DB_DATA_SOURCE");
+
+            //Validate the environment variables
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(dataSource))
+            {
+                //Throws an exception if credentials in .env file are not set or missing
+                throw new Exception("Database credentials are not set. Check your .env file.");
+            }
+
+            //Build the connection string using database credentials from environment variables
+            connectionString = $"User Id={username};Password={password};Data Source={dataSource}";
         }
 
         //this method grabs the queries we want to run from sql files

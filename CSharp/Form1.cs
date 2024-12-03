@@ -18,7 +18,7 @@ namespace CSharp
         {
             InitializeComponent();
 
-            dbManager = new DatabaseManager("COMP214_F24_er_59", "password");
+            dbManager = new DatabaseManager();
         }
 
         private void buttonLoadStaff_Click(object sender, EventArgs e)
