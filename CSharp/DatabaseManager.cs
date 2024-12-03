@@ -1,6 +1,7 @@
 ﻿using dotenv.net; //For loading environment variables from a .env file
 using Oracle.ManagedDataAccess.Client;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -53,10 +54,12 @@ namespace CSharp
         {
             DataTable table = new DataTable();
 
+            //Establish connection to Oracle database using the OracleConnection class
             using (OracleConnection connection = new OracleConnection(connectionString))
             {
-                connection.Open();
+                connection.Open(); //Open the connection
 
+                //Create new command object for the query using the OracleCommand class
                 using (OracleCommand command = new OracleCommand(query, connection))
                 {
                     using (OracleDataAdapter adapter = new OracleDataAdapter(command))
@@ -68,5 +71,35 @@ namespace CSharp
 
             return table;
         }
+
+        //Method - Executes a SQL Stored Procedure
+        //Dynamically accepts any parameter value's data type through a list of OracleParameter objects.
+        public void ExecuteStoredProcedure(string procedureName, List<OracleParameter> parameters)
+        {
+            //Establish connection to Oracle database using the OracleConnection class
+            using (OracleConnection connection = new OracleConnection(connectionString))
+            {
+                connection.Open(); //Open the connection
+
+                //Create new command object for the stored procedure using the OracleCommand class
+                using (OracleCommand command = new OracleCommand(procedureName, connection))
+                {
+                    //Specify the command object is a stored procedure by setting the CommandType property
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    //Loop through each OracleParameter object in the list
+                    foreach (var param in parameters)
+                    {
+                        //Add the OracleParameter to the Parameters property of the OracleCommand
+                        //The Parameters property is a part of the OracleCommand class and holds all parameters for the stored procedure
+                        command.Parameters.Add(param); 
+                    }
+
+                    //Execute the stored procedure with no returned data
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }
