@@ -109,5 +109,12 @@ namespace CSharp
                 MessageBox.Show($"Error with registering or loading Client data:\n {ex.Message}");
             }
         }
+
+        private void buttonHireStaffHire_Click(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 }
+
