@@ -20,7 +20,7 @@ namespace CSharp
             InitializeComponent();
 
             dbManager = new DatabaseManager();
-
+            /**
             //Load the SQL query from SQL file for Staff, Branch and Client tables
             string queryStaff = dbManager.LoadQueryFromFile("get_staff_data.sql");
             string queryBranch = dbManager.LoadQueryFromFile("get_branch_data.sql");
@@ -29,7 +29,7 @@ namespace CSharp
             //Display Staff, Branch and Client table in according DataGridView by executing the queries loaded
             dataGridViewStaff.DataSource = dbManager.ExecuteQuery(queryStaff);
             dataGridViewBranch.DataSource = dbManager.ExecuteQuery(queryBranch);
-            dataGridViewClient.DataSource = dbManager.ExecuteQuery(queryClient);
+            dataGridViewClient.DataSource = dbManager.ExecuteQuery(queryClient);**/
         }
 
         private void buttonLoadStaff_Click(object sender, EventArgs e)
@@ -106,15 +106,96 @@ namespace CSharp
             catch (Exception ex)
             {
                 //Output exception message
-                MessageBox.Show($"Error with registering or loading Client data:\n {ex.Message}");
+                MessageBox.Show($"Error with registering or updating Client data:\n {ex.Message}");
             }
         }
 
-        private void buttonHireStaffHire_Click(object sender, EventArgs e)
+        //Occurs when user clicks cancel in register client page
+        private void btnCancelRegisterClient_Click(object sender, EventArgs e)
         {
-            
+            ClearControlsClient(); //Clears text fields
         }
 
+        //Method - Clears controls for Client form so that previous information won't affect new actions
+        public void ClearControlsClient()
+        {
+            //Clears all textboxes
+            txtClientNo.Text = "";
+            txtFirstName.Text = "";
+            txtLastName.Text = "";
+            txtTelephoneNo.Text = "";
+            txtStreet.Text = "";
+            txtCity.Text = "";
+            txtEmail.Text = "";
+            txtPreferenceType.Text = "";
+            txtMaxRent.Text = "";
+        }
+
+        private void btnDeleteClient_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Get user inputs from the Client No field
+                string clientNo = txtDeleteByClientNo.Text;
+
+                //Use list of the OracleParameter objects to pass parameter to the stored procedure
+                List<OracleParameter> parameters = new List<OracleParameter>
+                { new OracleParameter("p_clientno", clientNo) };
+
+                //Execute the register client stored procedure
+                dbManager.ExecuteStoredProcedure("delete_client_sp", parameters);
+
+                //Show success message
+                MessageBox.Show("Client deleted successfully.");
+
+                //Load the SQL query from SQL file for Client Table
+                string query = dbManager.LoadQueryFromFile("get_client_data.sql");
+
+                //Display updated client table in DataGridView by executing the query loaded
+                dataGridViewClient.DataSource = dbManager.ExecuteQuery(query);
+            }
+            //Handle any errors that occur during registration or displaying the table
+            catch (Exception ex)
+            {
+                //Output exception message
+                MessageBox.Show($"Error with deleting or updating Client data:\n {ex.Message}");
+            }
+        }
+
+        //Occurs when button to select register client page is clicked
+        private void btnSelectRegisterClient_Click(object sender, EventArgs e)
+        {
+            //Visibility of panels dependent on if the user wants to register or delete a client
+            panelRegisterClient.Visible = true;
+            panelDeleteClient.Visible = false;
+            panelClientSelection.Visible = false;
+        }
+
+        //Occurs when button to select delete client page is clicked
+        private void btnSelectDeleteClient_Click(object sender, EventArgs e)
+        {
+            //Visibility of panels dependent on if the user wants to register or delete a client
+            panelRegisterClient.Visible = false;
+            panelDeleteClient.Visible = true;
+            panelClientSelection.Visible = false;
+        }
+
+        //Occurs when button to gp to register client page is clicked
+        private void btnGoToRegisterClient_Click(object sender, EventArgs e)
+        {
+            //Visibility of panels dependent on if the user wants to register or delete a client
+            panelRegisterClient.Visible = true;
+            panelDeleteClient.Visible = false;
+            panelClientSelection.Visible = false;
+        }
+
+        //Occurs when button to go to delete client page is clicked
+        private void btnGoToDeleteClient_Click(object sender, EventArgs e)
+        {
+            //Visibility of panels dependent on if the user wants to register or delete a client
+            panelRegisterClient.Visible = false;
+            panelDeleteClient.Visible = true;
+            panelClientSelection.Visible = false;
+        }
     }
 }
-
