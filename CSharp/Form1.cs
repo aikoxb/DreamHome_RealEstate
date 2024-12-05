@@ -41,7 +41,10 @@ namespace CSharp
             panelSelectStaffOption.Visible = true;
 
             //Make Branch's selction panel visible
-
+            panelIdentifyBranchAddress.Visible = false;
+            panelUpdateBranch.Visible = false;
+            panelOpenBranch.Visible = false;
+            panelSelectBranchOption.Visible = true;
 
             //Make Client's selction panel visible
             panelRegisterClient.Visible = false;
@@ -56,7 +59,7 @@ namespace CSharp
             textBoxHsDOB.Clear();
             textBoxHsStaffNo.Clear();
             textBoxHsBranchNo.Clear();
-            textBoxHsSex.Clear();
+            comboBoxHsSex.SelectedIndex = 0;
             textBoxHsPosition.Clear();
             textBoxHsSalary.Clear();
             textBoxHsTelephone.Clear();
@@ -74,12 +77,24 @@ namespace CSharp
                 DateTime dob = DateTime.Parse(textBoxHsDOB.Text);
                 string staffNo = textBoxHsStaffNo.Text;
                 string branchNo = textBoxHsBranchNo.Text;
-                char sex = textBoxHsSex.Text[0];
+                char sex = comboBoxHsSex.SelectedItem.ToString()[0];
                 string position = textBoxHsPosition.Text;
                 decimal salary = decimal.Parse(textBoxHsSalary.Text);
                 string telephone = textBoxHsTelephone.Text;
                 string mobile = textBoxHsMobile.Text;
                 string email = textBoxHsEmail.Text;
+
+                textBoxHsFirstName.Clear();
+                textBoxHsLastName.Clear();
+                textBoxHsDOB.Clear();
+                textBoxHsStaffNo.Clear();
+                textBoxHsBranchNo.Clear();
+                comboBoxHsSex.SelectedIndex = 0;
+                textBoxHsPosition.Clear();
+                textBoxHsSalary.Clear();
+                textBoxHsTelephone.Clear();
+                textBoxHsMobile.Clear();
+                textBoxHsEmail.Clear();
 
                 //Create list of OracleParameter objects to pass to the stored procedure
                 List<OracleParameter> parameters = new List<OracleParameter>
@@ -112,12 +127,13 @@ namespace CSharp
             }
         }
 
-        //button to go to UpdateStaff panel from HireStaff panel
-        private void buttonGoToUpdateStaff_Click(object sender, EventArgs e)
+        //button to go to HireStaff panel from Option screen
+        private void buttonSelectHireStaff_Click(object sender, EventArgs e)
         {
-            panelUpdateStaff.Visible = true;
-            panelHireStaff.Visible = false;
+            panelHireStaff.Visible = true;
+            panelUpdateStaff.Visible = false;
             panelSelectStaffOption.Visible = false;
+            comboBoxHsSex.SelectedIndex = 0;
         }
 
         //button to go to HireStaff panel from UpdateStaff panel
@@ -126,18 +142,19 @@ namespace CSharp
             panelHireStaff.Visible = true;
             panelUpdateStaff.Visible = false;
             panelSelectStaffOption.Visible = false;
-        }
-
-        //button to go to HireStaff panel from Option screen
-        private void buttonSelectHireStaff_Click(object sender, EventArgs e)
-        {
-            panelHireStaff.Visible = true;
-            panelUpdateStaff.Visible = false;
-            panelSelectStaffOption.Visible = false;
+            comboBoxHsSex.SelectedIndex = 0;
         }
 
         //button to go to UpdateStaff panel from Option screen
         private void buttonSelectUpdateStaff_Click(object sender, EventArgs e)
+        {
+            panelUpdateStaff.Visible = true;
+            panelHireStaff.Visible = false;
+            panelSelectStaffOption.Visible = false;
+        }
+
+        //button to go to UpdateStaff panel from HireStaff panel
+        private void buttonGoToUpdateStaff_Click(object sender, EventArgs e)
         {
             panelUpdateStaff.Visible = true;
             panelHireStaff.Visible = false;
@@ -161,6 +178,78 @@ namespace CSharp
         }
 
         //REPLACE WITH BRANCH TASKS
+
+        private void buttonSelectIdentifyBranchAddress_Click(object sender, EventArgs e)
+        {
+            panelIdentifyBranchAddress.Visible = true;
+            panelUpdateBranch.Visible = false;
+            panelOpenBranch.Visible = false;
+            panelSelectBranchOption.Visible = false;
+        }
+
+        private void buttonSelectUpdateBranch_Click(object sender, EventArgs e)
+        {
+            panelIdentifyBranchAddress.Visible = false;
+            panelUpdateBranch.Visible = true;
+            panelOpenBranch.Visible = false;
+            panelSelectBranchOption.Visible = false;
+        }
+
+        private void buttonSelectOpenBranch_Click(object sender, EventArgs e)
+        {
+            panelIdentifyBranchAddress.Visible = false;
+            panelUpdateBranch.Visible = false;
+            panelOpenBranch.Visible = true;
+            panelSelectBranchOption.Visible = false;
+        }
+
+        private void buttonGoToUpdateBranchFromIdentifyBranch_Click(object sender, EventArgs e)
+        {
+            panelIdentifyBranchAddress.Visible = false;
+            panelUpdateBranch.Visible = true;
+            panelOpenBranch.Visible = false;
+            panelSelectBranchOption.Visible = false;
+        }
+
+        private void buttonGoToOpenBranchFromIdentifyBranch_Click(object sender, EventArgs e)
+        {
+            panelIdentifyBranchAddress.Visible = false;
+            panelUpdateBranch.Visible = false;
+            panelOpenBranch.Visible = true;
+            panelSelectBranchOption.Visible = false;
+        }
+
+        private void buttonGoToIdentifyBranchAddressFromUpdateBranch_Click(object sender, EventArgs e)
+        {
+            panelIdentifyBranchAddress.Visible = true;
+            panelUpdateBranch.Visible = false;
+            panelOpenBranch.Visible = false;
+            panelSelectBranchOption.Visible = false;
+        }
+
+        private void buttonGoToOpenBranchFromUpdateBranch_Click(object sender, EventArgs e)
+        {
+            panelIdentifyBranchAddress.Visible = false;
+            panelUpdateBranch.Visible = false;
+            panelOpenBranch.Visible = true;
+            panelSelectBranchOption.Visible = false;
+        }
+
+        private void buttonGoToIdentifyBranchFromOpenBranch_Click(object sender, EventArgs e)
+        {
+            panelIdentifyBranchAddress.Visible = true;
+            panelUpdateBranch.Visible = false;
+            panelOpenBranch.Visible = false;
+            panelSelectBranchOption.Visible = false;
+        }
+
+        private void buttonGoToUpdateBranchFromOpenBranch_Click(object sender, EventArgs e)
+        {
+            panelIdentifyBranchAddress.Visible = false;
+            panelUpdateBranch.Visible = true;
+            panelOpenBranch.Visible = false;
+            panelSelectBranchOption.Visible = false;
+        }
         private void buttonLoadBranch_Click(object sender, EventArgs e)
         {
             try
@@ -174,6 +263,29 @@ namespace CSharp
             catch (Exception ex)
             {
                 Console.WriteLine($"Error loading Branch data: {ex.Message}");
+            }
+        }
+
+        private void buttonIbSubmitBranchNo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string branchNo = textBoxUbEnterBranchNo.Text;
+
+                if (string.IsNullOrEmpty(branchNo))
+                {
+                    MessageBox.Show("Please enter a branch number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string address = dbManager.GetBranchAddress(branchNo);
+
+                // Display the result
+                textBoxUbBranchAddress.Text = address;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error finding branch address: {ex.Message}");
             }
         }
 
@@ -311,5 +423,6 @@ namespace CSharp
             panelDeleteClient.Visible = true;
             panelClientSelection.Visible = false;
         }
+
     }
 }
