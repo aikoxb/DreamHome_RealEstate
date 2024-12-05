@@ -101,5 +101,28 @@ namespace CSharp
             }
         }
 
+        public string GetBranchAddress(string branchNo)
+        {
+            using (OracleConnection connection = new OracleConnection(connectionString))
+            {
+                connection.Open();
+
+                using (OracleCommand command = new OracleCommand("get_branch_address", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    //add an input parameter to pass branch number to the function
+                    command.Parameters.Add("p_branchno", OracleDbType.Varchar2).Value = branchNo;
+
+                    //add a return value parameter to store the result of the function
+                    command.Parameters.Add("v_address", OracleDbType.Varchar2, 100).Direction = ParameterDirection.ReturnValue;
+
+                    command.ExecuteNonQuery();
+
+                    return command.Parameters["v_address"].Value.ToString();
+                }
+            }
+        }
+
     }
 }
