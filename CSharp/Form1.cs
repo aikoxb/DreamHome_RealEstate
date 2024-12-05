@@ -20,7 +20,7 @@ namespace CSharp
             InitializeComponent();
 
             dbManager = new DatabaseManager();
-            /**
+            
             //Load the SQL query from SQL file for Staff, Branch and Client tables
             string queryStaff = dbManager.LoadQueryFromFile("get_staff_data.sql");
             string queryBranch = dbManager.LoadQueryFromFile("get_branch_data.sql");
@@ -29,7 +29,10 @@ namespace CSharp
             //Display Staff, Branch and Client table in according DataGridView by executing the queries loaded
             dataGridViewStaff.DataSource = dbManager.ExecuteQuery(queryStaff);
             dataGridViewBranch.DataSource = dbManager.ExecuteQuery(queryBranch);
-            dataGridViewClient.DataSource = dbManager.ExecuteQuery(queryClient);**/
+            dataGridViewClient.DataSource = dbManager.ExecuteQuery(queryClient);
+
+            //Loads Client No for user to delete during selection
+            LoadClientNo();
         }
 
         //Occurs when a different tab is changed - The selection panel is visible
@@ -300,8 +303,8 @@ namespace CSharp
             txtStreet.Text = "";
             txtCity.Text = "";
             txtEmail.Text = "";
-            txtPreferenceType.Text = "";
-            txtMaxRent.Text = "";
+            cboPreferenceType.SelectedIndex = -1;
+            txtMaxRent.Text = "";            
         }
 
         //When "Register Client" button is clicked, the client information that the user inputted gets stored in the database
@@ -317,7 +320,7 @@ namespace CSharp
                 string street = txtStreet.Text;
                 string city = txtCity.Text;
                 string email = txtEmail.Text;
-                string preferenceType = txtPreferenceType.Text;
+                string preferenceType = cboPreferenceType.SelectedItem.ToString();
                 int maxRent = Convert.ToInt32(txtMaxRent.Text);
 
                 //Create list of OracleParameter objects to pass to the stored procedure
@@ -341,6 +344,10 @@ namespace CSharp
 
                 //Display updated client table in DataGridView by executing the query loaded
                 dataGridViewClient.DataSource = dbManager.ExecuteQuery(query);
+
+                //Clears and resets the controls, so the user's next action in the form doesn't get affected
+                ClearControlsClient();
+                LoadClientNo();
             }
             //Handle any errors that occur during registration or displaying the table
             catch (Exception ex)
@@ -356,13 +363,35 @@ namespace CSharp
             ClearControlsClient(); //Clears text fields
         }
 
+        // Method to populate drop down list by getting Client No from database
+        public void LoadClientNo()
+        {
+            //Load the SQL query from SQL file for Client table's Client No
+            string queryClientNo = dbManager.LoadQueryFromFile("get_clientno.sql");
+
+            //Execute query and get result as DataTable
+            cboDeleteByClientNo.DataSource = dbManager.ExecuteQuery(queryClientNo);
+
+            //Set DisplayMember to database's column name that should appear in ComboBox
+            cboDeleteByClientNo.DisplayMember = "ClientNo";
+
+            //Set ValueMember to database's column name that represents value for each item
+            cboDeleteByClientNo.ValueMember = "ClientNo";
+        }
+
         //When delete button in client panel is clicked, the record according to the client number is deleted
         private void btnDeleteClient_Click(object sender, EventArgs e)
         {
             try
             {
-                //Get user inputs from the Client No field
-                string clientNo = txtDeleteByClientNo.Text;
+                //Ensure client number is selected
+                if (cboDeleteByClientNo.SelectedValue == null)
+                {
+                    MessageBox.Show("Please select a client to delete.\n {ex.Message}");
+                }
+
+                //Get user's selected ClientNo from ComboBox
+                string clientNo = cboDeleteByClientNo.SelectedValue.ToString();
 
                 //Use list of the OracleParameter objects to pass parameter to the stored procedure
                 List<OracleParameter> parameters = new List<OracleParameter>
@@ -379,12 +408,15 @@ namespace CSharp
 
                 //Display updated client table in DataGridView by executing the query loaded
                 dataGridViewClient.DataSource = dbManager.ExecuteQuery(query);
+
+                //Update Client No in the dropdown list
+                LoadClientNo();
             }
             //Handle any errors that occur during registration or displaying the table
             catch (Exception ex)
             {
                 //Output exception message
-                MessageBox.Show($"Error with deleting or updating Client data:\n {ex.Message}");
+                MessageBox.Show($"Error with deleting Client data:\n {ex.Message}");
             }
         }
 
