@@ -1,3 +1,3 @@
-SELECT staffno, fname, lname, position, sex, dob, salary, branchno, telephone, mobile, email
+SELECT staffno, salary, telephone, email
 FROM dh_staff
 WHERE staffno = '{staffno}'

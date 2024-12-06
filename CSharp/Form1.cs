@@ -210,7 +210,7 @@ namespace CSharp
         private void LoadUpdateStaffData()
         {
 
-            string queryUpdateStaff = dbManager.LoadQueryFromFile("get_staff_data.sql");
+            string queryUpdateStaff = dbManager.LoadQueryFromFile("fetch_editable_staff_data.sql");
             dataGridViewUpdateStaff.DataSource = dbManager.ExecuteQuery(queryUpdateStaff);
             
             dataGridViewUpdateStaff.ReadOnly = false;
