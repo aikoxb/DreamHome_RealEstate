@@ -282,7 +282,7 @@ namespace CSharp
                     string newEmail = row.Cells["EMAIL"].Value.ToString();
 
                     // Call the stored procedure with all updated values
-                    dbManager.ExecuteStoredProcedure("update_staff_sp", new List<OracleParameter> 
+                    dbManager.ExecuteStoredProcedure("update_staff_sp", new List<OracleParameter>
                     {
                         new OracleParameter("p_staffno", OracleDbType.Varchar2) { Value = staffNo },
                         new OracleParameter("p_salary", OracleDbType.Decimal) { Value = newSalary },
@@ -295,6 +295,10 @@ namespace CSharp
 
                 //load the table back up with the new changes present
                 LoadUpdateStaffData();
+
+                string queryStaff = dbManager.LoadQueryFromFile("get_staff_data.sql");
+                dataGridViewStaff.DataSource = dbManager.ExecuteQuery(queryStaff);
+
             }
             catch (Exception ex)
             {
@@ -317,6 +321,9 @@ namespace CSharp
             panelUpdateBranch.Visible = true;
             panelOpenBranch.Visible = false;
             panelSelectBranchOption.Visible = false;
+
+            LoadUpdateBranchData();
+            PopulateUpdateBranchDropdown();
         }
 
         private void buttonSelectOpenBranch_Click(object sender, EventArgs e)
@@ -333,6 +340,9 @@ namespace CSharp
             panelUpdateBranch.Visible = true;
             panelOpenBranch.Visible = false;
             panelSelectBranchOption.Visible = false;
+
+            LoadUpdateBranchData();
+            PopulateUpdateBranchDropdown();
         }
 
         private void buttonGoToOpenBranchFromIdentifyBranch_Click(object sender, EventArgs e)
@@ -373,6 +383,9 @@ namespace CSharp
             panelUpdateBranch.Visible = true;
             panelOpenBranch.Visible = false;
             panelSelectBranchOption.Visible = false;
+
+            LoadUpdateBranchData();
+            PopulateUpdateBranchDropdown();
         }
 
         private void buttonIbSubmitBranchNo_Click(object sender, EventArgs e)
@@ -397,6 +410,137 @@ namespace CSharp
                 Console.WriteLine($"Error finding branch address: {ex.Message}");
             }
         }
+
+        private void LoadUpdateBranchData()
+        {
+
+            string queryUpdateBranch = dbManager.LoadQueryFromFile("get_branch_data.sql");
+            dataGridViewUpdateBranch.DataSource = dbManager.ExecuteQuery(queryUpdateBranch);
+
+            dataGridViewUpdateBranch.ReadOnly = false;
+            dataGridViewUpdateBranch.AllowUserToAddRows = false;
+            dataGridViewUpdateBranch.AllowUserToDeleteRows = false;
+            dataGridViewUpdateBranch.SelectionMode = DataGridViewSelectionMode.CellSelect;
+
+            //only allow editing of specific columns
+            ConfigureUpdateBranchDataGridView();
+
+        }
+
+        private void PopulateUpdateBranchDropdown()
+        {
+            string queryBranchDropdown = "SELECT branchno FROM dh_branch";
+
+            DataTable branchData = dbManager.ExecuteQuery(queryBranchDropdown);
+
+            //clear the dropdown menu and add a "Show All" option
+            comboBoxUbSelectABranchToUpdate.Items.Clear();
+            comboBoxUbSelectABranchToUpdate.Items.Add("Show All");
+
+            //also add each branch number and name to the dropdown
+            foreach (DataRow row in branchData.Rows)
+            {
+                comboBoxUbSelectABranchToUpdate.Items.Add($"{row["staffno"]}");
+            }
+
+            //make "Show All" the default selection of the dropdown
+            comboBoxUbSelectABranchToUpdate.SelectedIndex = 0;
+        }
+
+        private void comboBoxUbSelectABranchToUpdate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxUbSelectABranchToUpdate.SelectedIndex == 0) //show all option
+            {
+                LoadUpdateBranchData();
+            }
+            else
+            {
+                //get the selected branch number from the ComboBox
+                string selectedBranch = comboBoxUbSelectABranchToUpdate.SelectedItem.ToString();
+
+                //filter the table to get only the row of the selected branch
+                string queryFilteredBranch = $"SELECT branchno, street, city, postcode FROM dh_branch WHERE branchno = '{selectedBranch}'";
+
+                //load the filtered table 
+                dataGridViewUpdateBranch.DataSource = dbManager.ExecuteQuery(queryFilteredBranch);
+
+                // Allow editing only for specific columns
+                ConfigureUpdateBranchDataGridView();
+            }
+        }
+
+        private void ConfigureUpdateBranchDataGridView()
+        {
+            foreach (DataGridViewColumn column in dataGridViewUpdateBranch.Columns)
+            {
+                if (column.Name == "STREET" || column.Name == "CITY" || column.Name == "POSTCODE")
+                {
+                    column.ReadOnly = false;
+                }
+                else
+                {
+                    column.ReadOnly = true;
+                }
+            }
+        }
+        private void buttonUbSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow row in dataGridViewUpdateBranch.Rows)
+                {
+                    //get the branch number aka the primary key 
+                    string branchNo = row.Cells["BRANCHNO"].Value.ToString();
+
+                    if (row.Cells["STREET"].Value == null || string.IsNullOrWhiteSpace(row.Cells["STREET"].Value.ToString()))
+                    {
+                        MessageBox.Show($"Street cannot be empty for Branch No: {branchNo}.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return; //exit the method because user updated cell incorrectly
+                    }
+
+                    if (row.Cells["CITY"].Value == null || string.IsNullOrWhiteSpace(row.Cells["CITY"].Value.ToString()))
+                    {
+                        MessageBox.Show($"City cannot be empty for Branch No: {branchNo}.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (row.Cells["POSTCODE"].Value == null || string.IsNullOrWhiteSpace(row.Cells["POSTCODE"].Value.ToString()))
+                    {
+                        MessageBox.Show($"POSTCODE cannot be empty for Branch No: {branchNo}.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    //get the updated values that user entered
+                    decimal newStreet = Convert.ToDecimal(row.Cells["STREET"].Value);
+                    string newCity = row.Cells["CITY"].Value.ToString();
+                    string newPostcode = row.Cells["POSTCODE"].Value.ToString();
+
+                    // Call the stored procedure with all updated values
+                    dbManager.ExecuteStoredProcedure("update_branch_sp", new List<OracleParameter>
+                    {
+                        new OracleParameter("p_branchno", OracleDbType.Varchar2) { Value = branchNo },
+                        new OracleParameter("p_street", OracleDbType.Decimal) { Value = newStreet },
+                        new OracleParameter("p_city", OracleDbType.Varchar2) { Value = newCity },
+                        new OracleParameter("p_postcode", OracleDbType.Varchar2) { Value = newPostcode }
+                    });
+                }
+
+                MessageBox.Show("Your update was successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //load the table back up with the new changes present
+                LoadUpdateBranchData();
+
+                string queryBranch = dbManager.LoadQueryFromFile("get_branch_data.sql");
+                dataGridViewBranch.DataSource = dbManager.ExecuteQuery(queryBranch);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving changes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //CLIENT TASKS
 
         //Method - Clears controls for Client form so that previous information won't affect new actions
         public void ClearControlsClient()
@@ -562,5 +706,6 @@ namespace CSharp
             panelClientSelection.Visible = false;
         }
 
+        
     }
 }

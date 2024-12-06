@@ -14,3 +14,5 @@ EXCEPTION
     WHEN NO_DATA_FOUND THEN
         RETURN 'Branch not found';
 END;
+
+select get_branch_address('B002') from dual;
