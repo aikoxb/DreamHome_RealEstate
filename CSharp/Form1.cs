@@ -447,7 +447,7 @@ namespace CSharp
                 string address = dbManager.GetBranchAddress(branchNo);
 
                 // Display the result
-                textBoxUbBranchAddress.Text = address;
+                labelUbBranchAddress.Text = $"That Branch's address is: {address}";
             }
             catch (Exception ex)
             {
