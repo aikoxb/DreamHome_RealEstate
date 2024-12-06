@@ -41,18 +41,19 @@ namespace CSharp
         //Occurs when a different tab is changed - The selection panel is visible
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Make Staff's slection panel visible
+            //Make Staff's selection panel visible
             panelUpdateStaff.Visible = false;
             panelHireStaff.Visible = false;
             panelSelectStaffOption.Visible = true;
 
-            //Make Branch's selction panel visible
+            //Make Branch's selection panel visible
             panelIdentifyBranchAddress.Visible = false;
             panelUpdateBranch.Visible = false;
             panelOpenBranch.Visible = false;
             panelSelectBranchOption.Visible = true;
+            pictureBoxBranch.Visible = true;
 
-            //Make Client's selction panel visible
+            //Make Client's selection panel visible
             panelRegisterClient.Visible = false;
             panelDeleteClient.Visible = false;
             panelClientSelection.Visible = true;
@@ -347,6 +348,7 @@ namespace CSharp
             panelUpdateBranch.Visible = false;
             panelOpenBranch.Visible = false;
             panelSelectBranchOption.Visible = false;
+            pictureBoxBranch.Visible = false;
         }
 
         private void buttonSelectUpdateBranch_Click(object sender, EventArgs e)
@@ -355,6 +357,7 @@ namespace CSharp
             panelUpdateBranch.Visible = true;
             panelOpenBranch.Visible = false;
             panelSelectBranchOption.Visible = false;
+            pictureBoxBranch.Visible = false;
 
             LoadUpdateBranchData();
             PopulateUpdateBranchDropdown();
@@ -366,6 +369,7 @@ namespace CSharp
             panelUpdateBranch.Visible = false;
             panelOpenBranch.Visible = true;
             panelSelectBranchOption.Visible = false;
+            pictureBoxBranch.Visible = false;
         }
 
         private void buttonGoToUpdateBranchFromIdentifyBranch_Click(object sender, EventArgs e)
@@ -374,6 +378,7 @@ namespace CSharp
             panelUpdateBranch.Visible = true;
             panelOpenBranch.Visible = false;
             panelSelectBranchOption.Visible = false;
+            pictureBoxBranch.Visible = false;
 
             LoadUpdateBranchData();
             PopulateUpdateBranchDropdown();
@@ -385,6 +390,7 @@ namespace CSharp
             panelUpdateBranch.Visible = false;
             panelOpenBranch.Visible = true;
             panelSelectBranchOption.Visible = false;
+            pictureBoxBranch.Visible = false;
         }
 
         private void buttonGoToIdentifyBranchAddressFromUpdateBranch_Click(object sender, EventArgs e)
@@ -393,6 +399,7 @@ namespace CSharp
             panelUpdateBranch.Visible = false;
             panelOpenBranch.Visible = false;
             panelSelectBranchOption.Visible = false;
+            pictureBoxBranch.Visible = false;
         }
 
         private void buttonGoToOpenBranchFromUpdateBranch_Click(object sender, EventArgs e)
@@ -401,6 +408,7 @@ namespace CSharp
             panelUpdateBranch.Visible = false;
             panelOpenBranch.Visible = true;
             panelSelectBranchOption.Visible = false;
+            pictureBoxBranch.Visible = false;
         }
 
         private void buttonGoToIdentifyBranchFromOpenBranch_Click(object sender, EventArgs e)
@@ -409,6 +417,7 @@ namespace CSharp
             panelUpdateBranch.Visible = false;
             panelOpenBranch.Visible = false;
             panelSelectBranchOption.Visible = false;
+            pictureBoxBranch.Visible = false;
         }
 
         private void buttonGoToUpdateBranchFromOpenBranch_Click(object sender, EventArgs e)
@@ -417,6 +426,7 @@ namespace CSharp
             panelUpdateBranch.Visible = true;
             panelOpenBranch.Visible = false;
             panelSelectBranchOption.Visible = false;
+            pictureBoxBranch.Visible = false;
 
             LoadUpdateBranchData();
             PopulateUpdateBranchDropdown();

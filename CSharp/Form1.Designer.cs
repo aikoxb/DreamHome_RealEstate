@@ -77,7 +77,7 @@
             this.labelHireStaff = new System.Windows.Forms.Label();
             this.dataGridViewStaff = new System.Windows.Forms.DataGridView();
             this.tabBranch = new System.Windows.Forms.TabPage();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxBranch = new System.Windows.Forms.PictureBox();
             this.dataGridViewBranch = new System.Windows.Forms.DataGridView();
             this.panelIdentifyBranchAddress = new System.Windows.Forms.Panel();
             this.textBoxUbBranchAddress = new System.Windows.Forms.TextBox();
@@ -152,7 +152,7 @@
             this.panelHireStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStaff)).BeginInit();
             this.tabBranch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBranch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBranch)).BeginInit();
             this.panelIdentifyBranchAddress.SuspendLayout();
             this.panelUpdateBranch.SuspendLayout();
@@ -689,12 +689,12 @@
             // tabBranch
             // 
             this.tabBranch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            this.tabBranch.Controls.Add(this.pictureBox3);
-            this.tabBranch.Controls.Add(this.dataGridViewBranch);
+            this.tabBranch.Controls.Add(this.pictureBoxBranch);
+            this.tabBranch.Controls.Add(this.panelSelectBranchOption);
             this.tabBranch.Controls.Add(this.panelIdentifyBranchAddress);
             this.tabBranch.Controls.Add(this.panelUpdateBranch);
             this.tabBranch.Controls.Add(this.panelOpenBranch);
-            this.tabBranch.Controls.Add(this.panelSelectBranchOption);
+            this.tabBranch.Controls.Add(this.dataGridViewBranch);
             this.tabBranch.Location = new System.Drawing.Point(4, 39);
             this.tabBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabBranch.Name = "tabBranch";
@@ -703,16 +703,16 @@
             this.tabBranch.TabIndex = 1;
             this.tabBranch.Text = "Branch Menu";
             // 
-            // pictureBox3
+            // pictureBoxBranch
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(442, 425);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(629, 391);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 32;
-            this.pictureBox3.TabStop = false;
+            this.pictureBoxBranch.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxBranch.Image")));
+            this.pictureBoxBranch.Location = new System.Drawing.Point(442, 425);
+            this.pictureBoxBranch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxBranch.Name = "pictureBoxBranch";
+            this.pictureBoxBranch.Size = new System.Drawing.Size(629, 391);
+            this.pictureBoxBranch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxBranch.TabIndex = 32;
+            this.pictureBoxBranch.TabStop = false;
             // 
             // dataGridViewBranch
             // 
@@ -1003,7 +1003,7 @@
             this.panelSelectBranchOption.Location = new System.Drawing.Point(0, 0);
             this.panelSelectBranchOption.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelSelectBranchOption.Name = "panelSelectBranchOption";
-            this.panelSelectBranchOption.Size = new System.Drawing.Size(1454, 441);
+            this.panelSelectBranchOption.Size = new System.Drawing.Size(1454, 845);
             this.panelSelectBranchOption.TabIndex = 11;
             // 
             // label16
@@ -1618,7 +1618,7 @@
             this.panelHireStaff.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStaff)).EndInit();
             this.tabBranch.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBranch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBranch)).EndInit();
             this.panelIdentifyBranchAddress.ResumeLayout(false);
             this.panelIdentifyBranchAddress.PerformLayout();
@@ -1751,7 +1751,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label labelSelectBranchOption;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBoxBranch;
         private System.Windows.Forms.Label labelOpenBranch;
         private System.Windows.Forms.ComboBox comboBoxHsBranchNo;
     }
