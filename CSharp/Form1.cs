@@ -5,9 +5,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace CSharp
 {
@@ -55,6 +58,48 @@ namespace CSharp
             panelClientSelection.Visible = true;
         }
 
+        //STAFF TASKS
+
+        //button to go to HireStaff panel from Option screen
+        private void buttonSelectHireStaff_Click(object sender, EventArgs e)
+        {
+            panelHireStaff.Visible = true;
+            panelUpdateStaff.Visible = false;
+            panelSelectStaffOption.Visible = false;
+            comboBoxHsSex.SelectedIndex = 0;
+        }
+
+        //button to go to HireStaff panel from UpdateStaff panel
+        private void buttonGoToHireStaff_Click(object sender, EventArgs e)
+        {
+            panelHireStaff.Visible = true;
+            panelUpdateStaff.Visible = false;
+            panelSelectStaffOption.Visible = false;
+            comboBoxHsSex.SelectedIndex = 0;
+        }
+
+        //button to go to UpdateStaff panel from Option screen
+        private void buttonSelectUpdateStaff_Click(object sender, EventArgs e)
+        {
+            panelUpdateStaff.Visible = true;
+            panelHireStaff.Visible = false;
+            panelSelectStaffOption.Visible = false;
+
+            LoadUpdateStaffData();
+            PopulateUpdateStaffDropdown();
+        }
+
+        //button to go to UpdateStaff panel from HireStaff panel
+        private void buttonGoToUpdateStaff_Click(object sender, EventArgs e)
+        {
+            panelUpdateStaff.Visible = true;
+            panelHireStaff.Visible = false;
+            panelSelectStaffOption.Visible = false;
+
+            LoadUpdateStaffData();
+            PopulateUpdateStaffDropdown();
+        }
+
         private void buttonHsClear_Click(object sender, EventArgs e)
         {
             textBoxHsFirstName.Clear();
@@ -80,7 +125,7 @@ namespace CSharp
                 DateTime dob = DateTime.Parse(textBoxHsDOB.Text);
                 string staffNo = textBoxHsStaffNo.Text;
                 string branchNo = textBoxHsBranchNo.Text;
-                char sex = comboBoxHsSex.SelectedItem.ToString()[0];
+                string sex = comboBoxHsSex.SelectedItem.ToString();
                 string position = textBoxHsPosition.Text;
                 decimal salary = decimal.Parse(textBoxHsSalary.Text);
                 string telephone = textBoxHsTelephone.Text;
@@ -110,16 +155,16 @@ namespace CSharp
                 new OracleParameter("p_email", email)
                 };
 
-                //Execute the register client stored procedure
+                //Execute the register staff stored procedure
                 dbManager.ExecuteStoredProcedure("staff_hire_sp", parameters);
 
                 //Show success message
                 MessageBox.Show("Staff hired successfully.");
 
-                //Load the SQL query from SQL file for Client Table
+                //Load the SQL query from SQL file for staff Table
                 string query = dbManager.LoadQueryFromFile("get_staff_data.sql");
 
-                //Display updated client table in DataGridView by executing the query loaded
+                //Display updated staff table in DataGridView by executing the query loaded
                 dataGridViewStaff.DataSource = dbManager.ExecuteQuery(query);
             }
             //Handle any errors that occur during registration or displaying the table
@@ -130,58 +175,134 @@ namespace CSharp
             }
         }
 
-        //button to go to HireStaff panel from Option screen
-        private void buttonSelectHireStaff_Click(object sender, EventArgs e)
+        private void LoadUpdateStaffData()
         {
-            panelHireStaff.Visible = true;
-            panelUpdateStaff.Visible = false;
-            panelSelectStaffOption.Visible = false;
-            comboBoxHsSex.SelectedIndex = 0;
+
+            string queryUpdateStaff = dbManager.LoadQueryFromFile("get_staff_data.sql");
+            dataGridViewUpdateStaff.DataSource = dbManager.ExecuteQuery(queryUpdateStaff);
+            
+            dataGridViewUpdateStaff.ReadOnly = false;
+            dataGridViewUpdateStaff.AllowUserToAddRows = false;
+            dataGridViewUpdateStaff.AllowUserToDeleteRows = false;
+            dataGridViewUpdateStaff.SelectionMode = DataGridViewSelectionMode.CellSelect;
+
+            //only allow editing of specific columns
+            ConfigureUpdateStaffDataGridView();
+            
         }
 
-        //button to go to HireStaff panel from UpdateStaff panel
-        private void buttonGoToHireStaff_Click(object sender, EventArgs e)
+        private void PopulateUpdateStaffDropdown()
         {
-            panelHireStaff.Visible = true;
-            panelUpdateStaff.Visible = false;
-            panelSelectStaffOption.Visible = false;
-            comboBoxHsSex.SelectedIndex = 0;
+            string queryStaffDropdown = "SELECT staffno, fname || ' ' || lname AS fullname FROM dh_staff";
+
+            DataTable staffData = dbManager.ExecuteQuery(queryStaffDropdown);
+
+            //clear the dropdown menu and add a "Show All" option
+            comboBoxUsSelectStaffToUpdate.Items.Clear();
+            comboBoxUsSelectStaffToUpdate.Items.Add("Show All");
+
+            //also add each staff number and name to the dropdown
+            foreach (DataRow row in staffData.Rows)
+            {
+                comboBoxUsSelectStaffToUpdate.Items.Add($"{row["staffno"]}: {row["fullname"]}");
+            }
+
+            //make "Show All" the default selection of the dropdown
+            comboBoxUsSelectStaffToUpdate.SelectedIndex = 0;
         }
 
-        //button to go to UpdateStaff panel from Option screen
-        private void buttonSelectUpdateStaff_Click(object sender, EventArgs e)
+        private void comboBoxUsSelectStaffToUpdate_SelectedIndexChanged(object sender, EventArgs e)
         {
-            panelUpdateStaff.Visible = true;
-            panelHireStaff.Visible = false;
-            panelSelectStaffOption.Visible = false;
+            if (comboBoxUsSelectStaffToUpdate.SelectedIndex == 0) //show all option
+            {
+                LoadUpdateStaffData();
+            }
+            else
+            {
+                //get the selected staff number from the ComboBox
+                string selectedStaff = comboBoxUsSelectStaffToUpdate.SelectedItem.ToString();
+                string staffNo = selectedStaff.Split(':')[0];
+
+                //filter the table to get only the row of the selected staff number
+                string queryFilteredStaff = $"SELECT staffno, fname, lname, position, sex, dob, salary, branchno, telephone, mobile, email FROM dh_staff WHERE staffno = '{staffNo}'";
+
+                //load the filtered table 
+                dataGridViewUpdateStaff.DataSource = dbManager.ExecuteQuery(queryFilteredStaff);
+
+                // Allow editing only for specific columns
+                ConfigureUpdateStaffDataGridView();
+            }
         }
 
-        //button to go to UpdateStaff panel from HireStaff panel
-        private void buttonGoToUpdateStaff_Click(object sender, EventArgs e)
+        private void ConfigureUpdateStaffDataGridView()
         {
-            panelUpdateStaff.Visible = true;
-            panelHireStaff.Visible = false;
-            panelSelectStaffOption.Visible = false;
+            foreach (DataGridViewColumn column in dataGridViewUpdateStaff.Columns)
+            {
+                if (column.Name == "SALARY" || column.Name == "TELEPHONE" || column.Name == "EMAIL")
+                {
+                    column.ReadOnly = false;
+                }
+                else
+                {
+                    column.ReadOnly = true;
+                }
+            }
         }
 
-        private void buttonLoadStaff_Click(object sender, EventArgs e)
+        private void buttonUsSubmit_Click(object sender, EventArgs e)
         {
             try
             {
-                //load the SQL query for staff
-                string query = dbManager.LoadQueryFromFile("staff.sql");
+                foreach (DataGridViewRow row in dataGridViewUpdateStaff.Rows)
+                {
+                    //get the staff number aka the primary key 
+                    string staffNo = row.Cells["STAFFNO"].Value.ToString();
 
-                //execute the query and display the data in the DataGridView
-                dataGridViewStaff.DataSource = dbManager.ExecuteQuery(query);
+                    if (row.Cells["SALARY"].Value == null || string.IsNullOrWhiteSpace(row.Cells["SALARY"].Value.ToString()))
+                    {
+                        MessageBox.Show($"Salary cannot be empty for Staff No: {staffNo}.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return; //exit the method because user updated cell incorrectly
+                    }
+
+                    if (row.Cells["TELEPHONE"].Value == null || string.IsNullOrWhiteSpace(row.Cells["TELEPHONE"].Value.ToString()))
+                    {
+                        MessageBox.Show($"Telephone cannot be empty for Staff No: {staffNo}.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (row.Cells["EMAIL"].Value == null || string.IsNullOrWhiteSpace(row.Cells["EMAIL"].Value.ToString()))
+                    {
+                        MessageBox.Show($"Email cannot be empty for Staff No: {staffNo}.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    //get the updated values that user entered
+                    decimal newSalary = Convert.ToDecimal(row.Cells["SALARY"].Value);
+                    string newTelephone = row.Cells["TELEPHONE"].Value.ToString();
+                    string newEmail = row.Cells["EMAIL"].Value.ToString();
+
+                    // Call the stored procedure with all updated values
+                    dbManager.ExecuteStoredProcedure("update_staff_sp", new List<OracleParameter> 
+                    {
+                        new OracleParameter("p_staffno", OracleDbType.Varchar2) { Value = staffNo },
+                        new OracleParameter("p_salary", OracleDbType.Decimal) { Value = newSalary },
+                        new OracleParameter("p_telephone", OracleDbType.Varchar2) { Value = newTelephone },
+                        new OracleParameter("p_email", OracleDbType.Varchar2) { Value = newEmail }
+                    });
+                }
+
+                MessageBox.Show("Your update was successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //load the table back up with the new changes present
+                LoadUpdateStaffData();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error loading Staff data: {ex.Message}");
+                MessageBox.Show($"Error saving changes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        //REPLACE WITH BRANCH TASKS
-
+        //BRANCH TASKS
         private void buttonSelectIdentifyBranchAddress_Click(object sender, EventArgs e)
         {
             panelIdentifyBranchAddress.Visible = true;
@@ -253,27 +374,12 @@ namespace CSharp
             panelOpenBranch.Visible = false;
             panelSelectBranchOption.Visible = false;
         }
-        private void buttonLoadBranch_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //load the SQL query for branch
-                string query = dbManager.LoadQueryFromFile("branch.sql");
-
-                //execute the query and display the data in the DataGridView
-                dataGridViewBranch.DataSource = dbManager.ExecuteQuery(query);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error loading Branch data: {ex.Message}");
-            }
-        }
 
         private void buttonIbSubmitBranchNo_Click(object sender, EventArgs e)
         {
             try
             {
-                string branchNo = textBoxUbEnterBranchNo.Text;
+                string branchNo = textBoxUbEnterBranchNo.Text.Trim();
 
                 if (string.IsNullOrEmpty(branchNo))
                 {

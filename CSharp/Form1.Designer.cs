@@ -28,16 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabStaff = new System.Windows.Forms.TabPage();
             this.dataGridViewStaff = new System.Windows.Forms.DataGridView();
-            this.buttonLoadStaff = new System.Windows.Forms.Button();
             this.panelUpdateStaff = new System.Windows.Forms.Panel();
             this.buttonUsSubmit = new System.Windows.Forms.Button();
             this.labelUsSelectStaffToUpdate = new System.Windows.Forms.Label();
@@ -78,7 +76,6 @@
             this.labelHireStaff = new System.Windows.Forms.Label();
             this.tabBranch = new System.Windows.Forms.TabPage();
             this.dataGridViewBranch = new System.Windows.Forms.DataGridView();
-            this.buttonLoadBranch = new System.Windows.Forms.Button();
             this.panelOpenBranch = new System.Windows.Forms.Panel();
             this.buttonGoToUpdateBranchFromOpenBranch = new System.Windows.Forms.Button();
             this.buttonGoToIdentifyBranchFromOpenBranch = new System.Windows.Forms.Button();
@@ -172,25 +169,22 @@
             this.tabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlMain.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControlMain.Location = new System.Drawing.Point(0, 0);
-            this.tabControlMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1461, 884);
+            this.tabControlMain.Size = new System.Drawing.Size(1299, 707);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
             // 
             // tabStaff
             // 
             this.tabStaff.Controls.Add(this.dataGridViewStaff);
-            this.tabStaff.Controls.Add(this.buttonLoadStaff);
             this.tabStaff.Controls.Add(this.panelUpdateStaff);
             this.tabStaff.Controls.Add(this.panelSelectStaffOption);
             this.tabStaff.Controls.Add(this.panelHireStaff);
-            this.tabStaff.Location = new System.Drawing.Point(4, 39);
-            this.tabStaff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabStaff.Location = new System.Drawing.Point(4, 34);
             this.tabStaff.Name = "tabStaff";
-            this.tabStaff.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabStaff.Size = new System.Drawing.Size(1453, 841);
+            this.tabStaff.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabStaff.Size = new System.Drawing.Size(1291, 669);
             this.tabStaff.TabIndex = 0;
             this.tabStaff.Text = "Staff Menu";
             this.tabStaff.UseVisualStyleBackColor = true;
@@ -198,24 +192,12 @@
             // dataGridViewStaff
             // 
             this.dataGridViewStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewStaff.Location = new System.Drawing.Point(160, 71);
-            this.dataGridViewStaff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridViewStaff.Location = new System.Drawing.Point(142, 57);
             this.dataGridViewStaff.Name = "dataGridViewStaff";
             this.dataGridViewStaff.RowHeadersWidth = 51;
             this.dataGridViewStaff.RowTemplate.Height = 24;
-            this.dataGridViewStaff.Size = new System.Drawing.Size(683, 399);
+            this.dataGridViewStaff.Size = new System.Drawing.Size(607, 319);
             this.dataGridViewStaff.TabIndex = 1;
-            // 
-            // buttonLoadStaff
-            // 
-            this.buttonLoadStaff.Location = new System.Drawing.Point(45, 71);
-            this.buttonLoadStaff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonLoadStaff.Name = "buttonLoadStaff";
-            this.buttonLoadStaff.Size = new System.Drawing.Size(84, 38);
-            this.buttonLoadStaff.TabIndex = 0;
-            this.buttonLoadStaff.Text = "Load Staff";
-            this.buttonLoadStaff.UseVisualStyleBackColor = true;
-            this.buttonLoadStaff.Click += new System.EventHandler(this.buttonLoadStaff_Click);
             // 
             // panelUpdateStaff
             // 
@@ -226,58 +208,59 @@
             this.panelUpdateStaff.Controls.Add(this.dataGridViewUpdateStaff);
             this.panelUpdateStaff.Controls.Add(this.buttonGoToHireStaff);
             this.panelUpdateStaff.Controls.Add(this.labelUpdateStaff);
-            this.panelUpdateStaff.Location = new System.Drawing.Point(904, 0);
-            this.panelUpdateStaff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panelUpdateStaff.Location = new System.Drawing.Point(804, 0);
             this.panelUpdateStaff.Name = "panelUpdateStaff";
-            this.panelUpdateStaff.Size = new System.Drawing.Size(548, 664);
+            this.panelUpdateStaff.Size = new System.Drawing.Size(487, 531);
             this.panelUpdateStaff.TabIndex = 3;
             this.panelUpdateStaff.Visible = false;
             // 
             // buttonUsSubmit
             // 
-            this.buttonUsSubmit.Location = new System.Drawing.Point(197, 472);
-            this.buttonUsSubmit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonUsSubmit.Location = new System.Drawing.Point(175, 378);
             this.buttonUsSubmit.Name = "buttonUsSubmit";
-            this.buttonUsSubmit.Size = new System.Drawing.Size(152, 50);
+            this.buttonUsSubmit.Size = new System.Drawing.Size(135, 40);
             this.buttonUsSubmit.TabIndex = 5;
             this.buttonUsSubmit.Text = "Submit";
             this.buttonUsSubmit.UseVisualStyleBackColor = true;
+            this.buttonUsSubmit.Click += new System.EventHandler(this.buttonUsSubmit_Click);
             // 
             // labelUsSelectStaffToUpdate
             // 
             this.labelUsSelectStaffToUpdate.AutoSize = true;
-            this.labelUsSelectStaffToUpdate.Location = new System.Drawing.Point(7, 89);
+            this.labelUsSelectStaffToUpdate.Location = new System.Drawing.Point(6, 71);
             this.labelUsSelectStaffToUpdate.Name = "labelUsSelectStaffToUpdate";
-            this.labelUsSelectStaffToUpdate.Size = new System.Drawing.Size(299, 30);
+            this.labelUsSelectStaffToUpdate.Size = new System.Drawing.Size(250, 25);
             this.labelUsSelectStaffToUpdate.TabIndex = 4;
             this.labelUsSelectStaffToUpdate.Text = "Select A Staff Member to Update";
             // 
             // comboBoxUsSelectStaffToUpdate
             // 
+            this.comboBoxUsSelectStaffToUpdate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxUsSelectStaffToUpdate.FormattingEnabled = true;
-            this.comboBoxUsSelectStaffToUpdate.Location = new System.Drawing.Point(303, 88);
-            this.comboBoxUsSelectStaffToUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBoxUsSelectStaffToUpdate.Location = new System.Drawing.Point(269, 70);
             this.comboBoxUsSelectStaffToUpdate.Name = "comboBoxUsSelectStaffToUpdate";
-            this.comboBoxUsSelectStaffToUpdate.Size = new System.Drawing.Size(231, 38);
+            this.comboBoxUsSelectStaffToUpdate.Size = new System.Drawing.Size(206, 33);
             this.comboBoxUsSelectStaffToUpdate.TabIndex = 3;
+            this.comboBoxUsSelectStaffToUpdate.SelectedIndexChanged += new System.EventHandler(this.comboBoxUsSelectStaffToUpdate_SelectedIndexChanged);
             // 
             // dataGridViewUpdateStaff
             // 
+            this.dataGridViewUpdateStaff.AllowUserToAddRows = false;
+            this.dataGridViewUpdateStaff.AllowUserToDeleteRows = false;
             this.dataGridViewUpdateStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUpdateStaff.Location = new System.Drawing.Point(12, 136);
-            this.dataGridViewUpdateStaff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridViewUpdateStaff.Location = new System.Drawing.Point(11, 109);
             this.dataGridViewUpdateStaff.Name = "dataGridViewUpdateStaff";
             this.dataGridViewUpdateStaff.RowHeadersWidth = 51;
             this.dataGridViewUpdateStaff.RowTemplate.Height = 24;
-            this.dataGridViewUpdateStaff.Size = new System.Drawing.Size(522, 329);
+            this.dataGridViewUpdateStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridViewUpdateStaff.Size = new System.Drawing.Size(464, 263);
             this.dataGridViewUpdateStaff.TabIndex = 2;
             // 
             // buttonGoToHireStaff
             // 
-            this.buttonGoToHireStaff.Location = new System.Drawing.Point(382, 559);
-            this.buttonGoToHireStaff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonGoToHireStaff.Location = new System.Drawing.Point(340, 447);
             this.buttonGoToHireStaff.Name = "buttonGoToHireStaff";
-            this.buttonGoToHireStaff.Size = new System.Drawing.Size(142, 81);
+            this.buttonGoToHireStaff.Size = new System.Drawing.Size(126, 65);
             this.buttonGoToHireStaff.TabIndex = 1;
             this.buttonGoToHireStaff.Text = "Go To Hire Staff";
             this.buttonGoToHireStaff.UseVisualStyleBackColor = true;
@@ -286,9 +269,9 @@
             // labelUpdateStaff
             // 
             this.labelUpdateStaff.AutoSize = true;
-            this.labelUpdateStaff.Location = new System.Drawing.Point(213, 18);
+            this.labelUpdateStaff.Location = new System.Drawing.Point(189, 14);
             this.labelUpdateStaff.Name = "labelUpdateStaff";
-            this.labelUpdateStaff.Size = new System.Drawing.Size(140, 30);
+            this.labelUpdateStaff.Size = new System.Drawing.Size(121, 25);
             this.labelUpdateStaff.TabIndex = 0;
             this.labelUpdateStaff.Text = "UPDATE STAFF";
             // 
@@ -298,27 +281,25 @@
             this.panelSelectStaffOption.Controls.Add(this.labelSelectStaffOption);
             this.panelSelectStaffOption.Controls.Add(this.buttonSelectUpdateStaff);
             this.panelSelectStaffOption.Controls.Add(this.buttonSelectHireStaff);
-            this.panelSelectStaffOption.Location = new System.Drawing.Point(904, 0);
-            this.panelSelectStaffOption.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panelSelectStaffOption.Location = new System.Drawing.Point(804, 0);
             this.panelSelectStaffOption.Name = "panelSelectStaffOption";
-            this.panelSelectStaffOption.Size = new System.Drawing.Size(548, 664);
+            this.panelSelectStaffOption.Size = new System.Drawing.Size(487, 531);
             this.panelSelectStaffOption.TabIndex = 4;
             // 
             // labelSelectStaffOption
             // 
             this.labelSelectStaffOption.AutoSize = true;
-            this.labelSelectStaffOption.Location = new System.Drawing.Point(171, 29);
+            this.labelSelectStaffOption.Location = new System.Drawing.Point(152, 23);
             this.labelSelectStaffOption.Name = "labelSelectStaffOption";
-            this.labelSelectStaffOption.Size = new System.Drawing.Size(228, 30);
+            this.labelSelectStaffOption.Size = new System.Drawing.Size(190, 25);
             this.labelSelectStaffOption.TabIndex = 0;
             this.labelSelectStaffOption.Text = "Please Select An Option:";
             // 
             // buttonSelectUpdateStaff
             // 
-            this.buttonSelectUpdateStaff.Location = new System.Drawing.Point(338, 231);
-            this.buttonSelectUpdateStaff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonSelectUpdateStaff.Location = new System.Drawing.Point(300, 185);
             this.buttonSelectUpdateStaff.Name = "buttonSelectUpdateStaff";
-            this.buttonSelectUpdateStaff.Size = new System.Drawing.Size(150, 76);
+            this.buttonSelectUpdateStaff.Size = new System.Drawing.Size(133, 61);
             this.buttonSelectUpdateStaff.TabIndex = 3;
             this.buttonSelectUpdateStaff.Text = "Update Staff";
             this.buttonSelectUpdateStaff.UseVisualStyleBackColor = true;
@@ -326,10 +307,9 @@
             // 
             // buttonSelectHireStaff
             // 
-            this.buttonSelectHireStaff.Location = new System.Drawing.Point(96, 231);
-            this.buttonSelectHireStaff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonSelectHireStaff.Location = new System.Drawing.Point(85, 185);
             this.buttonSelectHireStaff.Name = "buttonSelectHireStaff";
-            this.buttonSelectHireStaff.Size = new System.Drawing.Size(150, 75);
+            this.buttonSelectHireStaff.Size = new System.Drawing.Size(133, 60);
             this.buttonSelectHireStaff.TabIndex = 2;
             this.buttonSelectHireStaff.Text = "Hire Staff";
             this.buttonSelectHireStaff.UseVisualStyleBackColor = true;
@@ -364,10 +344,9 @@
             this.panelHireStaff.Controls.Add(this.textBoxHsFirstName);
             this.panelHireStaff.Controls.Add(this.labelStaffFirstName);
             this.panelHireStaff.Controls.Add(this.labelHireStaff);
-            this.panelHireStaff.Location = new System.Drawing.Point(904, 0);
-            this.panelHireStaff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panelHireStaff.Location = new System.Drawing.Point(804, 0);
             this.panelHireStaff.Name = "panelHireStaff";
-            this.panelHireStaff.Size = new System.Drawing.Size(548, 664);
+            this.panelHireStaff.Size = new System.Drawing.Size(487, 531);
             this.panelHireStaff.TabIndex = 2;
             this.panelHireStaff.Visible = false;
             // 
@@ -379,18 +358,16 @@
             "Select One",
             "M",
             "F"});
-            this.comboBoxHsSex.Location = new System.Drawing.Point(402, 250);
-            this.comboBoxHsSex.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBoxHsSex.Location = new System.Drawing.Point(357, 200);
             this.comboBoxHsSex.Name = "comboBoxHsSex";
-            this.comboBoxHsSex.Size = new System.Drawing.Size(136, 38);
+            this.comboBoxHsSex.Size = new System.Drawing.Size(121, 33);
             this.comboBoxHsSex.TabIndex = 28;
             // 
             // buttonHsHire
             // 
-            this.buttonHsHire.Location = new System.Drawing.Point(402, 559);
-            this.buttonHsHire.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonHsHire.Location = new System.Drawing.Point(357, 447);
             this.buttonHsHire.Name = "buttonHsHire";
-            this.buttonHsHire.Size = new System.Drawing.Size(112, 81);
+            this.buttonHsHire.Size = new System.Drawing.Size(100, 65);
             this.buttonHsHire.TabIndex = 26;
             this.buttonHsHire.Text = "Hire";
             this.buttonHsHire.UseVisualStyleBackColor = true;
@@ -398,10 +375,9 @@
             // 
             // buttonHsClear
             // 
-            this.buttonHsClear.Location = new System.Drawing.Point(243, 559);
-            this.buttonHsClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonHsClear.Location = new System.Drawing.Point(216, 447);
             this.buttonHsClear.Name = "buttonHsClear";
-            this.buttonHsClear.Size = new System.Drawing.Size(84, 54);
+            this.buttonHsClear.Size = new System.Drawing.Size(75, 43);
             this.buttonHsClear.TabIndex = 25;
             this.buttonHsClear.Text = "Clear";
             this.buttonHsClear.UseVisualStyleBackColor = true;
@@ -409,10 +385,9 @@
             // 
             // buttonGoToUpdateStaff
             // 
-            this.buttonGoToUpdateStaff.Location = new System.Drawing.Point(34, 559);
-            this.buttonGoToUpdateStaff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonGoToUpdateStaff.Location = new System.Drawing.Point(30, 447);
             this.buttonGoToUpdateStaff.Name = "buttonGoToUpdateStaff";
-            this.buttonGoToUpdateStaff.Size = new System.Drawing.Size(154, 81);
+            this.buttonGoToUpdateStaff.Size = new System.Drawing.Size(137, 65);
             this.buttonGoToUpdateStaff.TabIndex = 24;
             this.buttonGoToUpdateStaff.Text = "Go To Update Staff";
             this.buttonGoToUpdateStaff.UseVisualStyleBackColor = true;
@@ -420,206 +395,194 @@
             // 
             // textBoxHsTelephone
             // 
-            this.textBoxHsTelephone.Location = new System.Drawing.Point(34, 474);
-            this.textBoxHsTelephone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxHsTelephone.Location = new System.Drawing.Point(30, 379);
             this.textBoxHsTelephone.Name = "textBoxHsTelephone";
-            this.textBoxHsTelephone.Size = new System.Drawing.Size(112, 35);
+            this.textBoxHsTelephone.Size = new System.Drawing.Size(100, 30);
             this.textBoxHsTelephone.TabIndex = 22;
             // 
             // textBoxHsDOB
             // 
-            this.textBoxHsDOB.Location = new System.Drawing.Point(402, 136);
-            this.textBoxHsDOB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxHsDOB.Location = new System.Drawing.Point(357, 109);
             this.textBoxHsDOB.Name = "textBoxHsDOB";
-            this.textBoxHsDOB.Size = new System.Drawing.Size(139, 35);
+            this.textBoxHsDOB.Size = new System.Drawing.Size(124, 30);
             this.textBoxHsDOB.TabIndex = 21;
             // 
             // textBoxHsMobile
             // 
-            this.textBoxHsMobile.Location = new System.Drawing.Point(218, 474);
-            this.textBoxHsMobile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxHsMobile.Location = new System.Drawing.Point(194, 379);
             this.textBoxHsMobile.Name = "textBoxHsMobile";
-            this.textBoxHsMobile.Size = new System.Drawing.Size(112, 35);
+            this.textBoxHsMobile.Size = new System.Drawing.Size(100, 30);
             this.textBoxHsMobile.TabIndex = 19;
             // 
             // textBoxHsBranchNo
             // 
-            this.textBoxHsBranchNo.Location = new System.Drawing.Point(218, 250);
-            this.textBoxHsBranchNo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxHsBranchNo.Location = new System.Drawing.Point(194, 200);
             this.textBoxHsBranchNo.Name = "textBoxHsBranchNo";
-            this.textBoxHsBranchNo.Size = new System.Drawing.Size(112, 35);
+            this.textBoxHsBranchNo.Size = new System.Drawing.Size(100, 30);
             this.textBoxHsBranchNo.TabIndex = 18;
             // 
             // textBoxHsSalary
             // 
-            this.textBoxHsSalary.Location = new System.Drawing.Point(218, 366);
-            this.textBoxHsSalary.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxHsSalary.Location = new System.Drawing.Point(194, 293);
             this.textBoxHsSalary.Name = "textBoxHsSalary";
-            this.textBoxHsSalary.Size = new System.Drawing.Size(112, 35);
+            this.textBoxHsSalary.Size = new System.Drawing.Size(100, 30);
             this.textBoxHsSalary.TabIndex = 17;
             // 
             // textBoxHsEmail
             // 
-            this.textBoxHsEmail.Location = new System.Drawing.Point(402, 474);
-            this.textBoxHsEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxHsEmail.Location = new System.Drawing.Point(357, 379);
             this.textBoxHsEmail.Name = "textBoxHsEmail";
-            this.textBoxHsEmail.Size = new System.Drawing.Size(112, 35);
+            this.textBoxHsEmail.Size = new System.Drawing.Size(100, 30);
             this.textBoxHsEmail.TabIndex = 16;
             // 
             // textBoxHsPosition
             // 
-            this.textBoxHsPosition.Location = new System.Drawing.Point(34, 366);
-            this.textBoxHsPosition.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxHsPosition.Location = new System.Drawing.Point(30, 293);
             this.textBoxHsPosition.Name = "textBoxHsPosition";
-            this.textBoxHsPosition.Size = new System.Drawing.Size(112, 35);
+            this.textBoxHsPosition.Size = new System.Drawing.Size(100, 30);
             this.textBoxHsPosition.TabIndex = 15;
             // 
             // textBoxHsStaffNo
             // 
-            this.textBoxHsStaffNo.Location = new System.Drawing.Point(34, 250);
-            this.textBoxHsStaffNo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxHsStaffNo.Location = new System.Drawing.Point(30, 200);
             this.textBoxHsStaffNo.Name = "textBoxHsStaffNo";
-            this.textBoxHsStaffNo.Size = new System.Drawing.Size(112, 35);
+            this.textBoxHsStaffNo.Size = new System.Drawing.Size(100, 30);
             this.textBoxHsStaffNo.TabIndex = 14;
             // 
             // textBoxHsLastName
             // 
-            this.textBoxHsLastName.Location = new System.Drawing.Point(218, 136);
-            this.textBoxHsLastName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxHsLastName.Location = new System.Drawing.Point(194, 109);
             this.textBoxHsLastName.Name = "textBoxHsLastName";
-            this.textBoxHsLastName.Size = new System.Drawing.Size(112, 35);
+            this.textBoxHsLastName.Size = new System.Drawing.Size(100, 30);
             this.textBoxHsLastName.TabIndex = 13;
             // 
             // labelStaffTelephone
             // 
             this.labelStaffTelephone.AutoSize = true;
-            this.labelStaffTelephone.Location = new System.Drawing.Point(28, 439);
+            this.labelStaffTelephone.Location = new System.Drawing.Point(25, 351);
             this.labelStaffTelephone.Name = "labelStaffTelephone";
-            this.labelStaffTelephone.Size = new System.Drawing.Size(104, 30);
+            this.labelStaffTelephone.Size = new System.Drawing.Size(88, 25);
             this.labelStaffTelephone.TabIndex = 12;
             this.labelStaffTelephone.Text = "Telephone";
             // 
             // labelStaffSalary
             // 
             this.labelStaffSalary.AutoSize = true;
-            this.labelStaffSalary.Location = new System.Drawing.Point(213, 331);
+            this.labelStaffSalary.Location = new System.Drawing.Point(189, 265);
             this.labelStaffSalary.Name = "labelStaffSalary";
-            this.labelStaffSalary.Size = new System.Drawing.Size(68, 30);
+            this.labelStaffSalary.Size = new System.Drawing.Size(56, 25);
             this.labelStaffSalary.TabIndex = 11;
             this.labelStaffSalary.Text = "Salary";
             // 
             // labelStaffDOB
             // 
             this.labelStaffDOB.AutoSize = true;
-            this.labelStaffDOB.Location = new System.Drawing.Point(396, 101);
+            this.labelStaffDOB.Location = new System.Drawing.Point(352, 81);
             this.labelStaffDOB.Name = "labelStaffDOB";
-            this.labelStaffDOB.Size = new System.Drawing.Size(163, 30);
+            this.labelStaffDOB.Size = new System.Drawing.Size(137, 25);
             this.labelStaffDOB.TabIndex = 10;
             this.labelStaffDOB.Text = "DOB (YY-MM-DD)";
             // 
             // labelStaffPosition
             // 
             this.labelStaffPosition.AutoSize = true;
-            this.labelStaffPosition.Location = new System.Drawing.Point(28, 331);
+            this.labelStaffPosition.Location = new System.Drawing.Point(25, 265);
             this.labelStaffPosition.Name = "labelStaffPosition";
-            this.labelStaffPosition.Size = new System.Drawing.Size(84, 30);
+            this.labelStaffPosition.Size = new System.Drawing.Size(70, 25);
             this.labelStaffPosition.TabIndex = 9;
             this.labelStaffPosition.Text = "Position";
             // 
             // labelStaffMobile
             // 
             this.labelStaffMobile.AutoSize = true;
-            this.labelStaffMobile.Location = new System.Drawing.Point(213, 439);
+            this.labelStaffMobile.Location = new System.Drawing.Point(189, 351);
             this.labelStaffMobile.Name = "labelStaffMobile";
-            this.labelStaffMobile.Size = new System.Drawing.Size(73, 30);
+            this.labelStaffMobile.Size = new System.Drawing.Size(62, 25);
             this.labelStaffMobile.TabIndex = 8;
             this.labelStaffMobile.Text = "Mobile";
             // 
             // labelStaffBranchNo
             // 
             this.labelStaffBranchNo.AutoSize = true;
-            this.labelStaffBranchNo.Location = new System.Drawing.Point(213, 215);
+            this.labelStaffBranchNo.Location = new System.Drawing.Point(189, 172);
             this.labelStaffBranchNo.Name = "labelStaffBranchNo";
-            this.labelStaffBranchNo.Size = new System.Drawing.Size(104, 30);
+            this.labelStaffBranchNo.Size = new System.Drawing.Size(87, 25);
             this.labelStaffBranchNo.TabIndex = 7;
             this.labelStaffBranchNo.Text = "Branch No";
             // 
             // labelStaffEmail
             // 
             this.labelStaffEmail.AutoSize = true;
-            this.labelStaffEmail.Location = new System.Drawing.Point(396, 439);
+            this.labelStaffEmail.Location = new System.Drawing.Point(352, 351);
             this.labelStaffEmail.Name = "labelStaffEmail";
-            this.labelStaffEmail.Size = new System.Drawing.Size(62, 30);
+            this.labelStaffEmail.Size = new System.Drawing.Size(52, 25);
             this.labelStaffEmail.TabIndex = 6;
             this.labelStaffEmail.Text = "Email";
             // 
             // labelStaffStaffNo
             // 
             this.labelStaffStaffNo.AutoSize = true;
-            this.labelStaffStaffNo.Location = new System.Drawing.Point(28, 215);
+            this.labelStaffStaffNo.Location = new System.Drawing.Point(25, 172);
             this.labelStaffStaffNo.Name = "labelStaffStaffNo";
-            this.labelStaffStaffNo.Size = new System.Drawing.Size(83, 30);
+            this.labelStaffStaffNo.Size = new System.Drawing.Size(70, 25);
             this.labelStaffStaffNo.TabIndex = 5;
             this.labelStaffStaffNo.Text = "Staff No";
             // 
             // labelStaffLastName
             // 
             this.labelStaffLastName.AutoSize = true;
-            this.labelStaffLastName.Location = new System.Drawing.Point(213, 101);
+            this.labelStaffLastName.Location = new System.Drawing.Point(189, 81);
             this.labelStaffLastName.Name = "labelStaffLastName";
-            this.labelStaffLastName.Size = new System.Drawing.Size(106, 30);
+            this.labelStaffLastName.Size = new System.Drawing.Size(89, 25);
             this.labelStaffLastName.TabIndex = 4;
             this.labelStaffLastName.Text = "Last Name";
             // 
             // labelStaffSex
             // 
             this.labelStaffSex.AutoSize = true;
-            this.labelStaffSex.Location = new System.Drawing.Point(396, 215);
+            this.labelStaffSex.Location = new System.Drawing.Point(352, 172);
             this.labelStaffSex.Name = "labelStaffSex";
-            this.labelStaffSex.Size = new System.Drawing.Size(99, 30);
+            this.labelStaffSex.Size = new System.Drawing.Size(85, 25);
             this.labelStaffSex.TabIndex = 3;
             this.labelStaffSex.Text = "Sex (M/F)";
             // 
             // textBoxHsFirstName
             // 
-            this.textBoxHsFirstName.Location = new System.Drawing.Point(34, 136);
-            this.textBoxHsFirstName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxHsFirstName.Location = new System.Drawing.Point(30, 109);
             this.textBoxHsFirstName.Name = "textBoxHsFirstName";
-            this.textBoxHsFirstName.Size = new System.Drawing.Size(112, 35);
+            this.textBoxHsFirstName.Size = new System.Drawing.Size(100, 30);
             this.textBoxHsFirstName.TabIndex = 2;
             // 
             // labelStaffFirstName
             // 
             this.labelStaffFirstName.AutoSize = true;
-            this.labelStaffFirstName.Location = new System.Drawing.Point(28, 101);
+            this.labelStaffFirstName.Location = new System.Drawing.Point(25, 81);
             this.labelStaffFirstName.Name = "labelStaffFirstName";
-            this.labelStaffFirstName.Size = new System.Drawing.Size(107, 30);
+            this.labelStaffFirstName.Size = new System.Drawing.Size(90, 25);
             this.labelStaffFirstName.TabIndex = 1;
             this.labelStaffFirstName.Text = "First Name";
             // 
             // labelHireStaff
             // 
             this.labelHireStaff.AutoSize = true;
-            this.labelHireStaff.Location = new System.Drawing.Point(237, 18);
+            this.labelHireStaff.Location = new System.Drawing.Point(211, 14);
             this.labelHireStaff.Name = "labelHireStaff";
             this.labelHireStaff.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelHireStaff.Size = new System.Drawing.Size(113, 30);
+            this.labelHireStaff.Size = new System.Drawing.Size(98, 25);
             this.labelHireStaff.TabIndex = 0;
             this.labelHireStaff.Text = "HIRE STAFF";
             // 
             // tabBranch
             // 
             this.tabBranch.Controls.Add(this.dataGridViewBranch);
-            this.tabBranch.Controls.Add(this.buttonLoadBranch);
-            this.tabBranch.Controls.Add(this.panelOpenBranch);
-            this.tabBranch.Controls.Add(this.panelSelectBranchOption);
             this.tabBranch.Controls.Add(this.panelIdentifyBranchAddress);
             this.tabBranch.Controls.Add(this.panelUpdateBranch);
-            this.tabBranch.Location = new System.Drawing.Point(4, 39);
-            this.tabBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabBranch.Controls.Add(this.panelOpenBranch);
+            this.tabBranch.Controls.Add(this.panelSelectBranchOption);
+            this.tabBranch.Location = new System.Drawing.Point(4, 34);
             this.tabBranch.Name = "tabBranch";
-            this.tabBranch.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabBranch.Size = new System.Drawing.Size(1453, 841);
+            this.tabBranch.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabBranch.Size = new System.Drawing.Size(1291, 669);
             this.tabBranch.TabIndex = 1;
             this.tabBranch.Text = "Branch Menu";
             this.tabBranch.UseVisualStyleBackColor = true;
@@ -627,24 +590,12 @@
             // dataGridViewBranch
             // 
             this.dataGridViewBranch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewBranch.Location = new System.Drawing.Point(198, 50);
-            this.dataGridViewBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridViewBranch.Location = new System.Drawing.Point(176, 40);
             this.dataGridViewBranch.Name = "dataGridViewBranch";
             this.dataGridViewBranch.RowHeadersWidth = 51;
             this.dataGridViewBranch.RowTemplate.Height = 24;
-            this.dataGridViewBranch.Size = new System.Drawing.Size(647, 424);
+            this.dataGridViewBranch.Size = new System.Drawing.Size(575, 339);
             this.dataGridViewBranch.TabIndex = 1;
-            // 
-            // buttonLoadBranch
-            // 
-            this.buttonLoadBranch.Location = new System.Drawing.Point(43, 50);
-            this.buttonLoadBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonLoadBranch.Name = "buttonLoadBranch";
-            this.buttonLoadBranch.Size = new System.Drawing.Size(119, 42);
-            this.buttonLoadBranch.TabIndex = 0;
-            this.buttonLoadBranch.Text = "Load Branch";
-            this.buttonLoadBranch.UseVisualStyleBackColor = true;
-            this.buttonLoadBranch.Click += new System.EventHandler(this.buttonLoadBranch_Click);
             // 
             // panelOpenBranch
             // 
@@ -652,19 +603,17 @@
             this.panelOpenBranch.Controls.Add(this.buttonGoToUpdateBranchFromOpenBranch);
             this.panelOpenBranch.Controls.Add(this.buttonGoToIdentifyBranchFromOpenBranch);
             this.panelOpenBranch.Controls.Add(this.labelOpenBranch);
-            this.panelOpenBranch.Location = new System.Drawing.Point(904, 0);
-            this.panelOpenBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panelOpenBranch.Location = new System.Drawing.Point(804, 0);
             this.panelOpenBranch.Name = "panelOpenBranch";
-            this.panelOpenBranch.Size = new System.Drawing.Size(548, 664);
+            this.panelOpenBranch.Size = new System.Drawing.Size(487, 531);
             this.panelOpenBranch.TabIndex = 10;
             this.panelOpenBranch.Visible = false;
             // 
             // buttonGoToUpdateBranchFromOpenBranch
             // 
-            this.buttonGoToUpdateBranchFromOpenBranch.Location = new System.Drawing.Point(361, 559);
-            this.buttonGoToUpdateBranchFromOpenBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonGoToUpdateBranchFromOpenBranch.Location = new System.Drawing.Point(321, 447);
             this.buttonGoToUpdateBranchFromOpenBranch.Name = "buttonGoToUpdateBranchFromOpenBranch";
-            this.buttonGoToUpdateBranchFromOpenBranch.Size = new System.Drawing.Size(158, 81);
+            this.buttonGoToUpdateBranchFromOpenBranch.Size = new System.Drawing.Size(140, 65);
             this.buttonGoToUpdateBranchFromOpenBranch.TabIndex = 10;
             this.buttonGoToUpdateBranchFromOpenBranch.Text = "Go To Update Branch";
             this.buttonGoToUpdateBranchFromOpenBranch.UseVisualStyleBackColor = true;
@@ -672,10 +621,9 @@
             // 
             // buttonGoToIdentifyBranchFromOpenBranch
             // 
-            this.buttonGoToIdentifyBranchFromOpenBranch.Location = new System.Drawing.Point(30, 559);
-            this.buttonGoToIdentifyBranchFromOpenBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonGoToIdentifyBranchFromOpenBranch.Location = new System.Drawing.Point(27, 447);
             this.buttonGoToIdentifyBranchFromOpenBranch.Name = "buttonGoToIdentifyBranchFromOpenBranch";
-            this.buttonGoToIdentifyBranchFromOpenBranch.Size = new System.Drawing.Size(158, 81);
+            this.buttonGoToIdentifyBranchFromOpenBranch.Size = new System.Drawing.Size(140, 65);
             this.buttonGoToIdentifyBranchFromOpenBranch.TabIndex = 6;
             this.buttonGoToIdentifyBranchFromOpenBranch.Text = "Go To Identify Branch Address";
             this.buttonGoToIdentifyBranchFromOpenBranch.UseVisualStyleBackColor = true;
@@ -684,9 +632,9 @@
             // labelOpenBranch
             // 
             this.labelOpenBranch.AutoSize = true;
-            this.labelOpenBranch.Location = new System.Drawing.Point(207, 15);
+            this.labelOpenBranch.Location = new System.Drawing.Point(184, 12);
             this.labelOpenBranch.Name = "labelOpenBranch";
-            this.labelOpenBranch.Size = new System.Drawing.Size(144, 30);
+            this.labelOpenBranch.Size = new System.Drawing.Size(122, 25);
             this.labelOpenBranch.TabIndex = 0;
             this.labelOpenBranch.Text = "OPEN BRANCH";
             // 
@@ -697,18 +645,16 @@
             this.panelSelectBranchOption.Controls.Add(this.labelSelectBranchOption);
             this.panelSelectBranchOption.Controls.Add(this.buttonSelectUpdateBranch);
             this.panelSelectBranchOption.Controls.Add(this.buttonSelectIdentifyBranchAddress);
-            this.panelSelectBranchOption.Location = new System.Drawing.Point(904, 0);
-            this.panelSelectBranchOption.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panelSelectBranchOption.Location = new System.Drawing.Point(804, 0);
             this.panelSelectBranchOption.Name = "panelSelectBranchOption";
-            this.panelSelectBranchOption.Size = new System.Drawing.Size(548, 664);
+            this.panelSelectBranchOption.Size = new System.Drawing.Size(487, 531);
             this.panelSelectBranchOption.TabIndex = 11;
             // 
             // buttonSelectOpenBranch
             // 
-            this.buttonSelectOpenBranch.Location = new System.Drawing.Point(370, 231);
-            this.buttonSelectOpenBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonSelectOpenBranch.Location = new System.Drawing.Point(329, 185);
             this.buttonSelectOpenBranch.Name = "buttonSelectOpenBranch";
-            this.buttonSelectOpenBranch.Size = new System.Drawing.Size(150, 75);
+            this.buttonSelectOpenBranch.Size = new System.Drawing.Size(133, 76);
             this.buttonSelectOpenBranch.TabIndex = 4;
             this.buttonSelectOpenBranch.Text = "Open Branch";
             this.buttonSelectOpenBranch.UseVisualStyleBackColor = true;
@@ -717,18 +663,17 @@
             // labelSelectBranchOption
             // 
             this.labelSelectBranchOption.AutoSize = true;
-            this.labelSelectBranchOption.Location = new System.Drawing.Point(171, 29);
+            this.labelSelectBranchOption.Location = new System.Drawing.Point(152, 23);
             this.labelSelectBranchOption.Name = "labelSelectBranchOption";
-            this.labelSelectBranchOption.Size = new System.Drawing.Size(228, 30);
+            this.labelSelectBranchOption.Size = new System.Drawing.Size(190, 25);
             this.labelSelectBranchOption.TabIndex = 0;
             this.labelSelectBranchOption.Text = "Please Select An Option:";
             // 
             // buttonSelectUpdateBranch
             // 
-            this.buttonSelectUpdateBranch.Location = new System.Drawing.Point(195, 231);
-            this.buttonSelectUpdateBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonSelectUpdateBranch.Location = new System.Drawing.Point(173, 185);
             this.buttonSelectUpdateBranch.Name = "buttonSelectUpdateBranch";
-            this.buttonSelectUpdateBranch.Size = new System.Drawing.Size(150, 76);
+            this.buttonSelectUpdateBranch.Size = new System.Drawing.Size(133, 76);
             this.buttonSelectUpdateBranch.TabIndex = 3;
             this.buttonSelectUpdateBranch.Text = "Update Branch";
             this.buttonSelectUpdateBranch.UseVisualStyleBackColor = true;
@@ -736,10 +681,9 @@
             // 
             // buttonSelectIdentifyBranchAddress
             // 
-            this.buttonSelectIdentifyBranchAddress.Location = new System.Drawing.Point(25, 231);
-            this.buttonSelectIdentifyBranchAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonSelectIdentifyBranchAddress.Location = new System.Drawing.Point(22, 185);
             this.buttonSelectIdentifyBranchAddress.Name = "buttonSelectIdentifyBranchAddress";
-            this.buttonSelectIdentifyBranchAddress.Size = new System.Drawing.Size(150, 75);
+            this.buttonSelectIdentifyBranchAddress.Size = new System.Drawing.Size(133, 76);
             this.buttonSelectIdentifyBranchAddress.TabIndex = 2;
             this.buttonSelectIdentifyBranchAddress.Text = "Identify Branch Address";
             this.buttonSelectIdentifyBranchAddress.UseVisualStyleBackColor = true;
@@ -756,45 +700,41 @@
             this.panelIdentifyBranchAddress.Controls.Add(this.labelUbEnterBranchBo);
             this.panelIdentifyBranchAddress.Controls.Add(this.buttonGoToOpenBranchFromIdentifyBranch);
             this.panelIdentifyBranchAddress.Controls.Add(this.labelIdentifyBranchAddress);
-            this.panelIdentifyBranchAddress.Location = new System.Drawing.Point(904, 0);
-            this.panelIdentifyBranchAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panelIdentifyBranchAddress.Location = new System.Drawing.Point(804, 0);
             this.panelIdentifyBranchAddress.Name = "panelIdentifyBranchAddress";
-            this.panelIdentifyBranchAddress.Size = new System.Drawing.Size(548, 664);
+            this.panelIdentifyBranchAddress.Size = new System.Drawing.Size(487, 531);
             this.panelIdentifyBranchAddress.TabIndex = 5;
             this.panelIdentifyBranchAddress.Visible = false;
             // 
             // textBoxUbBranchAddress
             // 
-            this.textBoxUbBranchAddress.Location = new System.Drawing.Point(236, 222);
-            this.textBoxUbBranchAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxUbBranchAddress.Location = new System.Drawing.Point(12, 209);
             this.textBoxUbBranchAddress.Name = "textBoxUbBranchAddress";
             this.textBoxUbBranchAddress.ReadOnly = true;
-            this.textBoxUbBranchAddress.Size = new System.Drawing.Size(184, 35);
+            this.textBoxUbBranchAddress.Size = new System.Drawing.Size(463, 30);
             this.textBoxUbBranchAddress.TabIndex = 9;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(8, 226);
+            this.label12.Location = new System.Drawing.Point(7, 181);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(232, 30);
+            this.label12.Size = new System.Drawing.Size(197, 25);
             this.label12.TabIndex = 8;
             this.label12.Text = "That Branch\'s address is:";
             // 
             // textBoxUbEnterBranchNo
             // 
-            this.textBoxUbEnterBranchNo.Location = new System.Drawing.Point(194, 85);
-            this.textBoxUbEnterBranchNo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxUbEnterBranchNo.Location = new System.Drawing.Point(172, 68);
             this.textBoxUbEnterBranchNo.Name = "textBoxUbEnterBranchNo";
-            this.textBoxUbEnterBranchNo.Size = new System.Drawing.Size(142, 35);
+            this.textBoxUbEnterBranchNo.Size = new System.Drawing.Size(127, 30);
             this.textBoxUbEnterBranchNo.TabIndex = 7;
             // 
             // buttonGoToUpdateBranchFromIdentifyBranch
             // 
-            this.buttonGoToUpdateBranchFromIdentifyBranch.Location = new System.Drawing.Point(30, 559);
-            this.buttonGoToUpdateBranchFromIdentifyBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonGoToUpdateBranchFromIdentifyBranch.Location = new System.Drawing.Point(27, 447);
             this.buttonGoToUpdateBranchFromIdentifyBranch.Name = "buttonGoToUpdateBranchFromIdentifyBranch";
-            this.buttonGoToUpdateBranchFromIdentifyBranch.Size = new System.Drawing.Size(158, 81);
+            this.buttonGoToUpdateBranchFromIdentifyBranch.Size = new System.Drawing.Size(140, 65);
             this.buttonGoToUpdateBranchFromIdentifyBranch.TabIndex = 6;
             this.buttonGoToUpdateBranchFromIdentifyBranch.Text = "Go To Update Branch";
             this.buttonGoToUpdateBranchFromIdentifyBranch.UseVisualStyleBackColor = true;
@@ -802,10 +742,9 @@
             // 
             // buttonIbSubmitBranchNo
             // 
-            this.buttonIbSubmitBranchNo.Location = new System.Drawing.Point(361, 81);
-            this.buttonIbSubmitBranchNo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonIbSubmitBranchNo.Location = new System.Drawing.Point(321, 65);
             this.buttonIbSubmitBranchNo.Name = "buttonIbSubmitBranchNo";
-            this.buttonIbSubmitBranchNo.Size = new System.Drawing.Size(152, 50);
+            this.buttonIbSubmitBranchNo.Size = new System.Drawing.Size(135, 40);
             this.buttonIbSubmitBranchNo.TabIndex = 5;
             this.buttonIbSubmitBranchNo.Text = "Submit";
             this.buttonIbSubmitBranchNo.UseVisualStyleBackColor = true;
@@ -814,18 +753,17 @@
             // labelUbEnterBranchBo
             // 
             this.labelUbEnterBranchBo.AutoSize = true;
-            this.labelUbEnterBranchBo.Location = new System.Drawing.Point(7, 89);
+            this.labelUbEnterBranchBo.Location = new System.Drawing.Point(6, 71);
             this.labelUbEnterBranchBo.Name = "labelUbEnterBranchBo";
-            this.labelUbEnterBranchBo.Size = new System.Drawing.Size(194, 30);
+            this.labelUbEnterBranchBo.Size = new System.Drawing.Size(160, 25);
             this.labelUbEnterBranchBo.TabIndex = 4;
             this.labelUbEnterBranchBo.Text = "Enter the Branch No:";
             // 
             // buttonGoToOpenBranchFromIdentifyBranch
             // 
-            this.buttonGoToOpenBranchFromIdentifyBranch.Location = new System.Drawing.Point(375, 559);
-            this.buttonGoToOpenBranchFromIdentifyBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonGoToOpenBranchFromIdentifyBranch.Location = new System.Drawing.Point(333, 447);
             this.buttonGoToOpenBranchFromIdentifyBranch.Name = "buttonGoToOpenBranchFromIdentifyBranch";
-            this.buttonGoToOpenBranchFromIdentifyBranch.Size = new System.Drawing.Size(150, 81);
+            this.buttonGoToOpenBranchFromIdentifyBranch.Size = new System.Drawing.Size(133, 65);
             this.buttonGoToOpenBranchFromIdentifyBranch.TabIndex = 1;
             this.buttonGoToOpenBranchFromIdentifyBranch.Text = "Go To Open Branch";
             this.buttonGoToOpenBranchFromIdentifyBranch.UseVisualStyleBackColor = true;
@@ -834,9 +772,9 @@
             // labelIdentifyBranchAddress
             // 
             this.labelIdentifyBranchAddress.AutoSize = true;
-            this.labelIdentifyBranchAddress.Location = new System.Drawing.Point(159, 11);
+            this.labelIdentifyBranchAddress.Location = new System.Drawing.Point(141, 9);
             this.labelIdentifyBranchAddress.Name = "labelIdentifyBranchAddress";
-            this.labelIdentifyBranchAddress.Size = new System.Drawing.Size(262, 30);
+            this.labelIdentifyBranchAddress.Size = new System.Drawing.Size(223, 25);
             this.labelIdentifyBranchAddress.TabIndex = 0;
             this.labelIdentifyBranchAddress.Text = "IDENTIFY BRANCH ADDRESS";
             // 
@@ -850,19 +788,17 @@
             this.panelUpdateBranch.Controls.Add(this.dataGridViewUpdateBranch);
             this.panelUpdateBranch.Controls.Add(this.buttonGoToOpenBranchFromUpdateBranch);
             this.panelUpdateBranch.Controls.Add(this.labelUpdateBranch);
-            this.panelUpdateBranch.Location = new System.Drawing.Point(904, 0);
-            this.panelUpdateBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panelUpdateBranch.Location = new System.Drawing.Point(804, 0);
             this.panelUpdateBranch.Name = "panelUpdateBranch";
-            this.panelUpdateBranch.Size = new System.Drawing.Size(548, 664);
+            this.panelUpdateBranch.Size = new System.Drawing.Size(487, 531);
             this.panelUpdateBranch.TabIndex = 4;
             this.panelUpdateBranch.Visible = false;
             // 
             // buttonGoToIdentifyBranchAddressFromUpdateBranch
             // 
-            this.buttonGoToIdentifyBranchAddressFromUpdateBranch.Location = new System.Drawing.Point(30, 559);
-            this.buttonGoToIdentifyBranchAddressFromUpdateBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonGoToIdentifyBranchAddressFromUpdateBranch.Location = new System.Drawing.Point(27, 447);
             this.buttonGoToIdentifyBranchAddressFromUpdateBranch.Name = "buttonGoToIdentifyBranchAddressFromUpdateBranch";
-            this.buttonGoToIdentifyBranchAddressFromUpdateBranch.Size = new System.Drawing.Size(158, 81);
+            this.buttonGoToIdentifyBranchAddressFromUpdateBranch.Size = new System.Drawing.Size(140, 65);
             this.buttonGoToIdentifyBranchAddressFromUpdateBranch.TabIndex = 6;
             this.buttonGoToIdentifyBranchAddressFromUpdateBranch.Text = "Go To Identify Branch Address";
             this.buttonGoToIdentifyBranchAddressFromUpdateBranch.UseVisualStyleBackColor = true;
@@ -870,10 +806,9 @@
             // 
             // buttonUbSubmit
             // 
-            this.buttonUbSubmit.Location = new System.Drawing.Point(197, 472);
-            this.buttonUbSubmit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonUbSubmit.Location = new System.Drawing.Point(175, 378);
             this.buttonUbSubmit.Name = "buttonUbSubmit";
-            this.buttonUbSubmit.Size = new System.Drawing.Size(152, 50);
+            this.buttonUbSubmit.Size = new System.Drawing.Size(135, 40);
             this.buttonUbSubmit.TabIndex = 5;
             this.buttonUbSubmit.Text = "Submit";
             this.buttonUbSubmit.UseVisualStyleBackColor = true;
@@ -881,38 +816,35 @@
             // labelUbSelectBranchToUpdate
             // 
             this.labelUbSelectBranchToUpdate.AutoSize = true;
-            this.labelUbSelectBranchToUpdate.Location = new System.Drawing.Point(7, 89);
+            this.labelUbSelectBranchToUpdate.Location = new System.Drawing.Point(6, 71);
             this.labelUbSelectBranchToUpdate.Name = "labelUbSelectBranchToUpdate";
-            this.labelUbSelectBranchToUpdate.Size = new System.Drawing.Size(242, 30);
+            this.labelUbSelectBranchToUpdate.Size = new System.Drawing.Size(202, 25);
             this.labelUbSelectBranchToUpdate.TabIndex = 4;
             this.labelUbSelectBranchToUpdate.Text = "Select A Branch to Update";
             // 
             // comboBoxUbSelectABranchToUpdate
             // 
             this.comboBoxUbSelectABranchToUpdate.FormattingEnabled = true;
-            this.comboBoxUbSelectABranchToUpdate.Location = new System.Drawing.Point(303, 88);
-            this.comboBoxUbSelectABranchToUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBoxUbSelectABranchToUpdate.Location = new System.Drawing.Point(269, 70);
             this.comboBoxUbSelectABranchToUpdate.Name = "comboBoxUbSelectABranchToUpdate";
-            this.comboBoxUbSelectABranchToUpdate.Size = new System.Drawing.Size(231, 38);
+            this.comboBoxUbSelectABranchToUpdate.Size = new System.Drawing.Size(206, 33);
             this.comboBoxUbSelectABranchToUpdate.TabIndex = 3;
             // 
             // dataGridViewUpdateBranch
             // 
             this.dataGridViewUpdateBranch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUpdateBranch.Location = new System.Drawing.Point(12, 136);
-            this.dataGridViewUpdateBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridViewUpdateBranch.Location = new System.Drawing.Point(11, 109);
             this.dataGridViewUpdateBranch.Name = "dataGridViewUpdateBranch";
             this.dataGridViewUpdateBranch.RowHeadersWidth = 51;
             this.dataGridViewUpdateBranch.RowTemplate.Height = 24;
-            this.dataGridViewUpdateBranch.Size = new System.Drawing.Size(522, 329);
+            this.dataGridViewUpdateBranch.Size = new System.Drawing.Size(464, 263);
             this.dataGridViewUpdateBranch.TabIndex = 2;
             // 
             // buttonGoToOpenBranchFromUpdateBranch
             // 
-            this.buttonGoToOpenBranchFromUpdateBranch.Location = new System.Drawing.Point(375, 559);
-            this.buttonGoToOpenBranchFromUpdateBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonGoToOpenBranchFromUpdateBranch.Location = new System.Drawing.Point(333, 447);
             this.buttonGoToOpenBranchFromUpdateBranch.Name = "buttonGoToOpenBranchFromUpdateBranch";
-            this.buttonGoToOpenBranchFromUpdateBranch.Size = new System.Drawing.Size(150, 81);
+            this.buttonGoToOpenBranchFromUpdateBranch.Size = new System.Drawing.Size(133, 65);
             this.buttonGoToOpenBranchFromUpdateBranch.TabIndex = 1;
             this.buttonGoToOpenBranchFromUpdateBranch.Text = "Go To Open Branch";
             this.buttonGoToOpenBranchFromUpdateBranch.UseVisualStyleBackColor = true;
@@ -921,9 +853,9 @@
             // labelUpdateBranch
             // 
             this.labelUpdateBranch.AutoSize = true;
-            this.labelUpdateBranch.Location = new System.Drawing.Point(213, 18);
+            this.labelUpdateBranch.Location = new System.Drawing.Point(189, 14);
             this.labelUpdateBranch.Name = "labelUpdateBranch";
-            this.labelUpdateBranch.Size = new System.Drawing.Size(164, 30);
+            this.labelUpdateBranch.Size = new System.Drawing.Size(140, 25);
             this.labelUpdateBranch.TabIndex = 0;
             this.labelUpdateBranch.Text = "UPDATE BRANCH";
             // 
@@ -935,10 +867,9 @@
             this.tabClient.Controls.Add(this.panelDeleteClient);
             this.tabClient.Controls.Add(this.panelRegisterClient);
             this.tabClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.tabClient.Location = new System.Drawing.Point(4, 39);
-            this.tabClient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabClient.Location = new System.Drawing.Point(4, 34);
             this.tabClient.Name = "tabClient";
-            this.tabClient.Size = new System.Drawing.Size(1453, 841);
+            this.tabClient.Size = new System.Drawing.Size(1291, 669);
             this.tabClient.TabIndex = 2;
             this.tabClient.Text = "Client Menu";
             this.tabClient.UseVisualStyleBackColor = true;
@@ -947,53 +878,44 @@
             // 
             this.dataGridViewClient.AllowUserToAddRows = false;
             this.dataGridViewClient.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(31)))), ((int)(((byte)(57)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            this.dataGridViewClient.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle49.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle49.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(31)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
+            this.dataGridViewClient.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle49;
             this.dataGridViewClient.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewClient.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
             this.dataGridViewClient.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewClient.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewClient.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewClient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle50.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            dataGridViewCellStyle50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle50.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewClient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle50;
             this.dataGridViewClient.ColumnHeadersHeight = 34;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 12F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewClient.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewClient.EnableHeadersVisualStyles = false;
             this.dataGridViewClient.GridColor = System.Drawing.Color.White;
-            this.dataGridViewClient.Location = new System.Drawing.Point(0, 428);
-            this.dataGridViewClient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridViewClient.Location = new System.Drawing.Point(0, 342);
             this.dataGridViewClient.Name = "dataGridViewClient";
             this.dataGridViewClient.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewClient.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle51.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            dataGridViewCellStyle51.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewClient.RowHeadersDefaultCellStyle = dataGridViewCellStyle51;
             this.dataGridViewClient.RowHeadersVisible = false;
             this.dataGridViewClient.RowHeadersWidth = 51;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 12F);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(31)))), ((int)(((byte)(57)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            this.dataGridViewClient.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle52.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 12F);
+            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(31)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle52.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
+            this.dataGridViewClient.RowsDefaultCellStyle = dataGridViewCellStyle52;
             this.dataGridViewClient.RowTemplate.Height = 24;
             this.dataGridViewClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewClient.Size = new System.Drawing.Size(1452, 409);
+            this.dataGridViewClient.Size = new System.Drawing.Size(1291, 327);
             this.dataGridViewClient.StandardTab = true;
             this.dataGridViewClient.TabIndex = 1;
             // 
@@ -1009,15 +931,16 @@
             this.panelClientSelection.Location = new System.Drawing.Point(-4, 0);
             this.panelClientSelection.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelClientSelection.Name = "panelClientSelection";
-            this.panelClientSelection.Size = new System.Drawing.Size(1454, 441);
+            this.panelClientSelection.Size = new System.Drawing.Size(1292, 353);
             this.panelClientSelection.TabIndex = 25;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(88, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(78, 16);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(629, 391);
+            this.pictureBox1.Size = new System.Drawing.Size(559, 313);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 28;
             this.pictureBox1.TabStop = false;
@@ -1028,9 +951,9 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Franklin Gothic Demi Cond", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label11.Location = new System.Drawing.Point(977, 115);
+            this.label11.Location = new System.Drawing.Point(868, 92);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(102, 36);
+            this.label11.Size = new System.Drawing.Size(87, 30);
             this.label11.TabIndex = 27;
             this.label11.Text = "PLEASE,";
             // 
@@ -1040,9 +963,9 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Franklin Gothic Demi Cond", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label14.Location = new System.Drawing.Point(841, 151);
+            this.label14.Location = new System.Drawing.Point(748, 121);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(392, 61);
+            this.label14.Size = new System.Drawing.Size(319, 47);
             this.label14.TabIndex = 26;
             this.label14.Text = " SELECT AN OPTION:";
             // 
@@ -1052,10 +975,9 @@
             this.btnSelectDeleteClient.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSelectDeleteClient.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectDeleteClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            this.btnSelectDeleteClient.Location = new System.Drawing.Point(1051, 239);
-            this.btnSelectDeleteClient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSelectDeleteClient.Location = new System.Drawing.Point(934, 191);
             this.btnSelectDeleteClient.Name = "btnSelectDeleteClient";
-            this.btnSelectDeleteClient.Size = new System.Drawing.Size(159, 68);
+            this.btnSelectDeleteClient.Size = new System.Drawing.Size(141, 54);
             this.btnSelectDeleteClient.TabIndex = 25;
             this.btnSelectDeleteClient.Text = "DELETE CLIENT";
             this.btnSelectDeleteClient.UseVisualStyleBackColor = false;
@@ -1067,10 +989,9 @@
             this.btnSelectRegisterClient.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSelectRegisterClient.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectRegisterClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            this.btnSelectRegisterClient.Location = new System.Drawing.Point(854, 239);
-            this.btnSelectRegisterClient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSelectRegisterClient.Location = new System.Drawing.Point(759, 191);
             this.btnSelectRegisterClient.Name = "btnSelectRegisterClient";
-            this.btnSelectRegisterClient.Size = new System.Drawing.Size(159, 68);
+            this.btnSelectRegisterClient.Size = new System.Drawing.Size(141, 54);
             this.btnSelectRegisterClient.TabIndex = 24;
             this.btnSelectRegisterClient.Text = "REGISTER CLIENT";
             this.btnSelectRegisterClient.UseVisualStyleBackColor = false;
@@ -1086,7 +1007,7 @@
             this.panelDeleteClient.Location = new System.Drawing.Point(0, 0);
             this.panelDeleteClient.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelDeleteClient.Name = "panelDeleteClient";
-            this.panelDeleteClient.Size = new System.Drawing.Size(1451, 441);
+            this.panelDeleteClient.Size = new System.Drawing.Size(1290, 353);
             this.panelDeleteClient.TabIndex = 24;
             this.panelDeleteClient.Visible = false;
             // 
@@ -1096,9 +1017,9 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label15.Location = new System.Drawing.Point(591, 172);
+            this.label15.Location = new System.Drawing.Point(525, 138);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(78, 25);
+            this.label15.Size = new System.Drawing.Size(69, 21);
             this.label15.TabIndex = 31;
             this.label15.Text = "Client No";
             // 
@@ -1108,9 +1029,9 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Franklin Gothic Demi Cond", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(564, 71);
+            this.label13.Location = new System.Drawing.Point(501, 57);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(299, 61);
+            this.label13.Size = new System.Drawing.Size(246, 47);
             this.label13.TabIndex = 30;
             this.label13.Text = "DELETE CLIENT";
             // 
@@ -1118,10 +1039,9 @@
             // 
             this.cboDeleteByClientNo.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboDeleteByClientNo.FormattingEnabled = true;
-            this.cboDeleteByClientNo.Location = new System.Drawing.Point(596, 208);
-            this.cboDeleteByClientNo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cboDeleteByClientNo.Location = new System.Drawing.Point(530, 166);
             this.cboDeleteByClientNo.Name = "cboDeleteByClientNo";
-            this.cboDeleteByClientNo.Size = new System.Drawing.Size(235, 38);
+            this.cboDeleteByClientNo.Size = new System.Drawing.Size(209, 33);
             this.cboDeleteByClientNo.TabIndex = 29;
             // 
             // btnGoToRegisterClient
@@ -1130,10 +1050,9 @@
             this.btnGoToRegisterClient.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGoToRegisterClient.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGoToRegisterClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            this.btnGoToRegisterClient.Location = new System.Drawing.Point(75, 288);
-            this.btnGoToRegisterClient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnGoToRegisterClient.Location = new System.Drawing.Point(67, 230);
             this.btnGoToRegisterClient.Name = "btnGoToRegisterClient";
-            this.btnGoToRegisterClient.Size = new System.Drawing.Size(135, 92);
+            this.btnGoToRegisterClient.Size = new System.Drawing.Size(120, 74);
             this.btnGoToRegisterClient.TabIndex = 25;
             this.btnGoToRegisterClient.Text = "GO TO REGISTER CLIENT";
             this.btnGoToRegisterClient.UseVisualStyleBackColor = false;
@@ -1145,10 +1064,9 @@
             this.btnDeleteClient.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteClient.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            this.btnDeleteClient.Location = new System.Drawing.Point(1223, 308);
-            this.btnDeleteClient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDeleteClient.Location = new System.Drawing.Point(1087, 246);
             this.btnDeleteClient.Name = "btnDeleteClient";
-            this.btnDeleteClient.Size = new System.Drawing.Size(141, 89);
+            this.btnDeleteClient.Size = new System.Drawing.Size(125, 71);
             this.btnDeleteClient.TabIndex = 21;
             this.btnDeleteClient.Text = "DELETE";
             this.btnDeleteClient.UseVisualStyleBackColor = false;
@@ -1182,7 +1100,7 @@
             this.panelRegisterClient.Location = new System.Drawing.Point(0, 0);
             this.panelRegisterClient.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelRegisterClient.Name = "panelRegisterClient";
-            this.panelRegisterClient.Size = new System.Drawing.Size(1451, 441);
+            this.panelRegisterClient.Size = new System.Drawing.Size(1290, 353);
             this.panelRegisterClient.TabIndex = 23;
             this.panelRegisterClient.Visible = false;
             // 
@@ -1193,10 +1111,9 @@
             this.cboPreferenceType.Items.AddRange(new object[] {
             "House",
             "Flat"});
-            this.cboPreferenceType.Location = new System.Drawing.Point(676, 242);
-            this.cboPreferenceType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cboPreferenceType.Location = new System.Drawing.Point(601, 194);
             this.cboPreferenceType.Name = "cboPreferenceType";
-            this.cboPreferenceType.Size = new System.Drawing.Size(235, 38);
+            this.cboPreferenceType.Size = new System.Drawing.Size(209, 33);
             this.cboPreferenceType.TabIndex = 28;
             // 
             // txtMaxRent
@@ -1204,10 +1121,10 @@
             this.txtMaxRent.BackColor = System.Drawing.Color.White;
             this.txtMaxRent.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaxRent.ForeColor = System.Drawing.Color.Black;
-            this.txtMaxRent.Location = new System.Drawing.Point(932, 245);
+            this.txtMaxRent.Location = new System.Drawing.Point(828, 196);
             this.txtMaxRent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMaxRent.Name = "txtMaxRent";
-            this.txtMaxRent.Size = new System.Drawing.Size(235, 35);
+            this.txtMaxRent.Size = new System.Drawing.Size(209, 30);
             this.txtMaxRent.TabIndex = 27;
             // 
             // btnGoToDeleteClient
@@ -1217,10 +1134,9 @@
             this.btnGoToDeleteClient.FlatAppearance.BorderSize = 10;
             this.btnGoToDeleteClient.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGoToDeleteClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            this.btnGoToDeleteClient.Location = new System.Drawing.Point(28, 319);
-            this.btnGoToDeleteClient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnGoToDeleteClient.Location = new System.Drawing.Point(25, 255);
             this.btnGoToDeleteClient.Name = "btnGoToDeleteClient";
-            this.btnGoToDeleteClient.Size = new System.Drawing.Size(135, 92);
+            this.btnGoToDeleteClient.Size = new System.Drawing.Size(120, 74);
             this.btnGoToDeleteClient.TabIndex = 26;
             this.btnGoToDeleteClient.Text = "GO TO DELETE CLIENT";
             this.btnGoToDeleteClient.UseVisualStyleBackColor = false;
@@ -1233,10 +1149,9 @@
             this.btnCancelRegisterClient.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnCancelRegisterClient.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelRegisterClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            this.btnCancelRegisterClient.Location = new System.Drawing.Point(1104, 335);
-            this.btnCancelRegisterClient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCancelRegisterClient.Location = new System.Drawing.Point(981, 268);
             this.btnCancelRegisterClient.Name = "btnCancelRegisterClient";
-            this.btnCancelRegisterClient.Size = new System.Drawing.Size(145, 61);
+            this.btnCancelRegisterClient.Size = new System.Drawing.Size(129, 49);
             this.btnCancelRegisterClient.TabIndex = 20;
             this.btnCancelRegisterClient.Text = "CLEAR";
             this.btnCancelRegisterClient.UseVisualStyleBackColor = false;
@@ -1248,9 +1163,9 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Franklin Gothic Demi Cond", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label10.Location = new System.Drawing.Point(564, 28);
+            this.label10.Location = new System.Drawing.Point(501, 22);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(347, 61);
+            this.label10.Size = new System.Drawing.Size(286, 47);
             this.label10.TabIndex = 20;
             this.label10.Text = "REGISTER CLIENT";
             // 
@@ -1259,10 +1174,10 @@
             this.txtClientNo.BackColor = System.Drawing.Color.White;
             this.txtClientNo.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClientNo.ForeColor = System.Drawing.Color.Black;
-            this.txtClientNo.Location = new System.Drawing.Point(28, 91);
+            this.txtClientNo.Location = new System.Drawing.Point(25, 73);
             this.txtClientNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtClientNo.Name = "txtClientNo";
-            this.txtClientNo.Size = new System.Drawing.Size(116, 35);
+            this.txtClientNo.Size = new System.Drawing.Size(104, 30);
             this.txtClientNo.TabIndex = 2;
             // 
             // label19
@@ -1271,9 +1186,9 @@
             this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label19.Location = new System.Drawing.Point(29, 135);
+            this.label19.Location = new System.Drawing.Point(26, 108);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(90, 25);
+            this.label19.Size = new System.Drawing.Size(79, 21);
             this.label19.TabIndex = 12;
             this.label19.Text = "First Name";
             // 
@@ -1283,9 +1198,9 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(23, 58);
+            this.label1.Location = new System.Drawing.Point(20, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 25);
+            this.label1.Size = new System.Drawing.Size(69, 21);
             this.label1.TabIndex = 11;
             this.label1.Text = "Client No";
             // 
@@ -1296,10 +1211,9 @@
             this.btnRegisterClient.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnRegisterClient.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegisterClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            this.btnRegisterClient.Location = new System.Drawing.Point(1282, 319);
-            this.btnRegisterClient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRegisterClient.Location = new System.Drawing.Point(1140, 255);
             this.btnRegisterClient.Name = "btnRegisterClient";
-            this.btnRegisterClient.Size = new System.Drawing.Size(141, 92);
+            this.btnRegisterClient.Size = new System.Drawing.Size(125, 74);
             this.btnRegisterClient.TabIndex = 0;
             this.btnRegisterClient.Text = "REGISTER";
             this.btnRegisterClient.UseVisualStyleBackColor = false;
@@ -1310,10 +1224,10 @@
             this.txtFirstName.BackColor = System.Drawing.Color.White;
             this.txtFirstName.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstName.ForeColor = System.Drawing.Color.Black;
-            this.txtFirstName.Location = new System.Drawing.Point(28, 165);
+            this.txtFirstName.Location = new System.Drawing.Point(25, 132);
             this.txtFirstName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(289, 35);
+            this.txtFirstName.Size = new System.Drawing.Size(257, 30);
             this.txtFirstName.TabIndex = 3;
             // 
             // label7
@@ -1322,9 +1236,9 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(927, 212);
+            this.label7.Location = new System.Drawing.Point(824, 170);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 25);
+            this.label7.Size = new System.Drawing.Size(69, 21);
             this.label7.TabIndex = 19;
             this.label7.Text = "Max Rent";
             // 
@@ -1334,9 +1248,9 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(340, 135);
+            this.label3.Location = new System.Drawing.Point(302, 108);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 25);
+            this.label3.Size = new System.Drawing.Size(78, 21);
             this.label3.TabIndex = 13;
             this.label3.Text = "Last Name";
             // 
@@ -1345,10 +1259,10 @@
             this.txtLastName.BackColor = System.Drawing.Color.White;
             this.txtLastName.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastName.ForeColor = System.Drawing.Color.Black;
-            this.txtLastName.Location = new System.Drawing.Point(344, 165);
+            this.txtLastName.Location = new System.Drawing.Point(306, 132);
             this.txtLastName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(306, 35);
+            this.txtLastName.Size = new System.Drawing.Size(272, 30);
             this.txtLastName.TabIndex = 4;
             // 
             // label8
@@ -1357,9 +1271,9 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label8.Location = new System.Drawing.Point(671, 212);
+            this.label8.Location = new System.Drawing.Point(596, 170);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(128, 25);
+            this.label8.Size = new System.Drawing.Size(110, 21);
             this.label8.TabIndex = 18;
             this.label8.Text = "Preference Type";
             // 
@@ -1369,9 +1283,9 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(671, 132);
+            this.label6.Location = new System.Drawing.Point(596, 106);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(112, 25);
+            this.label6.Size = new System.Drawing.Size(97, 21);
             this.label6.TabIndex = 14;
             this.label6.Text = "Telephone No";
             // 
@@ -1380,10 +1294,10 @@
             this.txtTelephoneNo.BackColor = System.Drawing.Color.White;
             this.txtTelephoneNo.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelephoneNo.ForeColor = System.Drawing.Color.Black;
-            this.txtTelephoneNo.Location = new System.Drawing.Point(676, 165);
+            this.txtTelephoneNo.Location = new System.Drawing.Point(601, 132);
             this.txtTelephoneNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTelephoneNo.Name = "txtTelephoneNo";
-            this.txtTelephoneNo.Size = new System.Drawing.Size(235, 35);
+            this.txtTelephoneNo.Size = new System.Drawing.Size(209, 30);
             this.txtTelephoneNo.TabIndex = 5;
             // 
             // txtEmail
@@ -1391,10 +1305,10 @@
             this.txtEmail.BackColor = System.Drawing.Color.White;
             this.txtEmail.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.Color.Black;
-            this.txtEmail.Location = new System.Drawing.Point(932, 165);
+            this.txtEmail.Location = new System.Drawing.Point(828, 132);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(491, 35);
+            this.txtEmail.Size = new System.Drawing.Size(437, 30);
             this.txtEmail.TabIndex = 8;
             // 
             // label9
@@ -1403,9 +1317,9 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(934, 132);
+            this.label9.Location = new System.Drawing.Point(830, 106);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 25);
+            this.label9.Size = new System.Drawing.Size(46, 21);
             this.label9.TabIndex = 17;
             this.label9.Text = "Email";
             // 
@@ -1415,9 +1329,9 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(23, 215);
+            this.label5.Location = new System.Drawing.Point(20, 172);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 25);
+            this.label5.Size = new System.Drawing.Size(50, 21);
             this.label5.TabIndex = 15;
             this.label5.Text = "Street";
             // 
@@ -1426,10 +1340,10 @@
             this.txtStreet.BackColor = System.Drawing.Color.White;
             this.txtStreet.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStreet.ForeColor = System.Drawing.Color.Black;
-            this.txtStreet.Location = new System.Drawing.Point(28, 245);
+            this.txtStreet.Location = new System.Drawing.Point(25, 196);
             this.txtStreet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtStreet.Name = "txtStreet";
-            this.txtStreet.Size = new System.Drawing.Size(289, 35);
+            this.txtStreet.Size = new System.Drawing.Size(257, 30);
             this.txtStreet.TabIndex = 6;
             // 
             // txtCity
@@ -1437,10 +1351,10 @@
             this.txtCity.BackColor = System.Drawing.Color.White;
             this.txtCity.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCity.ForeColor = System.Drawing.Color.Black;
-            this.txtCity.Location = new System.Drawing.Point(344, 245);
+            this.txtCity.Location = new System.Drawing.Point(306, 196);
             this.txtCity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(306, 35);
+            this.txtCity.Size = new System.Drawing.Size(272, 30);
             this.txtCity.TabIndex = 7;
             // 
             // label4
@@ -1449,23 +1363,22 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(340, 215);
+            this.label4.Location = new System.Drawing.Point(302, 172);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 25);
+            this.label4.Size = new System.Drawing.Size(34, 21);
             this.label4.TabIndex = 16;
             this.label4.Text = "City";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            this.ClientSize = new System.Drawing.Size(1461, 884);
+            this.ClientSize = new System.Drawing.Size(1299, 707);
             this.Controls.Add(this.tabControlMain);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Dream House";
             this.tabControlMain.ResumeLayout(false);
@@ -1508,8 +1421,6 @@
         private System.Windows.Forms.TabPage tabStaff;
         private System.Windows.Forms.TabPage tabBranch;
         private System.Windows.Forms.TabPage tabClient;
-        private System.Windows.Forms.Button buttonLoadStaff;
-        private System.Windows.Forms.Button buttonLoadBranch;
         private System.Windows.Forms.DataGridView dataGridViewClient;
         private System.Windows.Forms.Button btnRegisterClient;
         private System.Windows.Forms.DataGridView dataGridViewStaff;

@@ -111,11 +111,11 @@ namespace CSharp
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
-                    //add an input parameter to pass branch number to the function
-                    command.Parameters.Add("p_branchno", OracleDbType.Varchar2).Value = branchNo;
-
                     //add a return value parameter to store the result of the function
                     command.Parameters.Add("v_address", OracleDbType.Varchar2, 100).Direction = ParameterDirection.ReturnValue;
+
+                    //add an input parameter to pass branch number to the function
+                    command.Parameters.Add("p_branchno", OracleDbType.Varchar2).Value = branchNo;
 
                     command.ExecuteNonQuery();
 
