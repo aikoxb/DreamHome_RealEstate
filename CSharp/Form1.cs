@@ -23,7 +23,7 @@ namespace CSharp
             InitializeComponent();
 
             dbManager = new DatabaseManager();
-            
+            /**
             //Load the SQL query from SQL file for Staff, Branch and Client tables
             string queryStaff = dbManager.LoadQueryFromFile("get_staff_data.sql");
             string queryBranch = dbManager.LoadQueryFromFile("get_branch_data.sql");
@@ -35,7 +35,7 @@ namespace CSharp
             dataGridViewClient.DataSource = dbManager.ExecuteQuery(queryClient);
 
             //Loads Client No for user to delete during selection
-            LoadClientNo();
+            LoadClientNo(); **/
         }
 
         //Occurs when a different tab is changed - The selection panel is visible
