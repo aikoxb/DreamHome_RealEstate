@@ -14,5 +14,3 @@ BEGIN
 
     COMMIT;
 END;
-
-select * from dh_branch

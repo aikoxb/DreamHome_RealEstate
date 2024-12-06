@@ -23,7 +23,7 @@ namespace CSharp
             InitializeComponent();
 
             dbManager = new DatabaseManager();
-            /**
+            
             //Load the SQL query from SQL file for Staff, Branch and Client tables
             string queryStaff = dbManager.LoadQueryFromFile("get_staff_data.sql");
             string queryBranch = dbManager.LoadQueryFromFile("get_branch_data.sql");
@@ -35,7 +35,7 @@ namespace CSharp
             dataGridViewClient.DataSource = dbManager.ExecuteQuery(queryClient);
 
             //Loads Client No for user to delete during selection
-            LoadClientNo(); **/
+            LoadClientNo();
         }
 
         //Occurs when a different tab is changed - The selection panel is visible
@@ -67,6 +67,8 @@ namespace CSharp
             panelUpdateStaff.Visible = false;
             panelSelectStaffOption.Visible = false;
             comboBoxHsSex.SelectedIndex = 0;
+
+            PopulateBranchDropDownInHireStaff();
         }
 
         //button to go to HireStaff panel from UpdateStaff panel
@@ -76,6 +78,8 @@ namespace CSharp
             panelUpdateStaff.Visible = false;
             panelSelectStaffOption.Visible = false;
             comboBoxHsSex.SelectedIndex = 0;
+
+            PopulateBranchDropDownInHireStaff();
         }
 
         //button to go to UpdateStaff panel from Option screen
@@ -100,13 +104,41 @@ namespace CSharp
             PopulateUpdateStaffDropdown();
         }
 
+        private void PopulateBranchDropDownInHireStaff()
+        {
+            try
+            {
+                string branchDropdown = dbManager.LoadQueryFromFile("fetch_branchNo.sql");
+
+                DataTable branchData = dbManager.ExecuteQuery(branchDropdown);
+
+                //clear the ComboBox to avoid duplicate rows
+                comboBoxHsBranchNo.Items.Clear();
+
+                comboBoxHsBranchNo.Items.Add("Select One");
+
+                foreach (DataRow row in branchData.Rows)
+                {
+                    comboBoxHsBranchNo.Items.Add(row["branchno"].ToString());
+                }
+
+                //display "Select One" automatically
+                comboBoxHsBranchNo.SelectedIndex = 0;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading branch numbers: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void buttonHsClear_Click(object sender, EventArgs e)
         {
             textBoxHsFirstName.Clear();
             textBoxHsLastName.Clear();
             textBoxHsDOB.Clear();
             textBoxHsStaffNo.Clear();
-            textBoxHsBranchNo.Clear();
+            comboBoxHsBranchNo.SelectedIndex = 0;
             comboBoxHsSex.SelectedIndex = 0;
             textBoxHsPosition.Clear();
             textBoxHsSalary.Clear();
@@ -124,7 +156,7 @@ namespace CSharp
                 string lastName = textBoxHsLastName.Text;
                 DateTime dob = DateTime.Parse(textBoxHsDOB.Text);
                 string staffNo = textBoxHsStaffNo.Text;
-                string branchNo = textBoxHsBranchNo.Text;
+                string branchNo = comboBoxHsBranchNo.SelectedItem.ToString();
                 string sex = comboBoxHsSex.SelectedItem.ToString();
                 string position = textBoxHsPosition.Text;
                 decimal salary = decimal.Parse(textBoxHsSalary.Text);
@@ -136,7 +168,7 @@ namespace CSharp
                 textBoxHsLastName.Clear();
                 textBoxHsDOB.Clear();
                 textBoxHsStaffNo.Clear();
-                textBoxHsBranchNo.Clear();
+                comboBoxHsBranchNo.SelectedIndex = 0;
                 comboBoxHsSex.SelectedIndex = 0;
                 textBoxHsPosition.Clear();
                 textBoxHsSalary.Clear();
@@ -224,7 +256,9 @@ namespace CSharp
                 string staffNo = selectedStaff.Split(':')[0];
 
                 //filter the table to get only the row of the selected staff number
-                string queryFilteredStaff = $"SELECT staffno, fname, lname, position, sex, dob, salary, branchno, telephone, mobile, email FROM dh_staff WHERE staffno = '{staffNo}'";
+                string queryFilteredStaff = dbManager.LoadQueryFromFile("filter_staff.sql");
+
+                queryFilteredStaff = queryFilteredStaff.Replace("{staffno}", staffNo);
 
                 //load the filtered table 
                 dataGridViewUpdateStaff.DataSource = dbManager.ExecuteQuery(queryFilteredStaff);
@@ -429,7 +463,7 @@ namespace CSharp
 
         private void PopulateUpdateBranchDropdown()
         {
-            string queryBranchDropdown = "SELECT branchno FROM dh_branch";
+            string queryBranchDropdown = dbManager.LoadQueryFromFile("fetch_branchNo.sql");
 
             DataTable branchData = dbManager.ExecuteQuery(queryBranchDropdown);
 
@@ -440,7 +474,7 @@ namespace CSharp
             //also add each branch number and name to the dropdown
             foreach (DataRow row in branchData.Rows)
             {
-                comboBoxUbSelectABranchToUpdate.Items.Add($"{row["staffno"]}");
+                comboBoxUbSelectABranchToUpdate.Items.Add($"{row["branchno"]}");
             }
 
             //make "Show All" the default selection of the dropdown
@@ -456,10 +490,13 @@ namespace CSharp
             else
             {
                 //get the selected branch number from the ComboBox
-                string selectedBranch = comboBoxUbSelectABranchToUpdate.SelectedItem.ToString();
+                string branchNo = comboBoxUbSelectABranchToUpdate.SelectedItem.ToString();
 
                 //filter the table to get only the row of the selected branch
-                string queryFilteredBranch = $"SELECT branchno, street, city, postcode FROM dh_branch WHERE branchno = '{selectedBranch}'";
+                //string queryFilteredBranch = $"SELECT branchno, street, city, postcode FROM dh_branch WHERE branchno = '{branchNo}'";
+                string queryFilteredBranch = dbManager.LoadQueryFromFile("filter_branch.sql");
+
+                queryFilteredBranch = queryFilteredBranch.Replace("{branchno}", branchNo);
 
                 //load the filtered table 
                 dataGridViewUpdateBranch.DataSource = dbManager.ExecuteQuery(queryFilteredBranch);
@@ -511,7 +548,7 @@ namespace CSharp
                     }
 
                     //get the updated values that user entered
-                    decimal newStreet = Convert.ToDecimal(row.Cells["STREET"].Value);
+                    string newStreet = row.Cells["STREET"].Value.ToString();
                     string newCity = row.Cells["CITY"].Value.ToString();
                     string newPostcode = row.Cells["POSTCODE"].Value.ToString();
 
@@ -519,7 +556,7 @@ namespace CSharp
                     dbManager.ExecuteStoredProcedure("update_branch_sp", new List<OracleParameter>
                     {
                         new OracleParameter("p_branchno", OracleDbType.Varchar2) { Value = branchNo },
-                        new OracleParameter("p_street", OracleDbType.Decimal) { Value = newStreet },
+                        new OracleParameter("p_street", OracleDbType.Varchar2) { Value = newStreet },
                         new OracleParameter("p_city", OracleDbType.Varchar2) { Value = newCity },
                         new OracleParameter("p_postcode", OracleDbType.Varchar2) { Value = newPostcode }
                     });
@@ -706,6 +743,5 @@ namespace CSharp
             panelClientSelection.Visible = false;
         }
 
-        
     }
 }
