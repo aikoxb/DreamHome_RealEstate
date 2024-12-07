@@ -530,6 +530,7 @@ namespace CSharp
                 }
             }
         }
+
         private void buttonUbSubmit_Click(object sender, EventArgs e)
         {
             try
@@ -587,7 +588,100 @@ namespace CSharp
             }
         }
 
+        //Method - Clears controls for Branch form so that previous information won't affect new actions
+        public void ClearControlsBranch()
+        {
+            //Clears all textboxes
+            txtOBBranchNo.Text = "";
+            txtOBStreet.Text = "";
+            txtOBCity.Text = "";
+            txtOBPostalCode.Text = "";
+        }
+
+        //When button to open branch is clicked a new branch is created
+        private void btnOpenBranch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Get user inputs from the form's fields
+                string branchNo = txtOBBranchNo.Text;
+                string street = txtOBStreet.Text;
+                string city = txtOBCity.Text;
+                string postalCode = txtOBPostalCode.Text;
+
+                //Create list of OracleParameter objects to pass to the stored procedure
+                List<OracleParameter> parameters = new List<OracleParameter>
+                {
+                new OracleParameter("p_branchno", branchNo), new OracleParameter("p_street", street),
+                new OracleParameter("p_city", city), new OracleParameter("p_postcode", postalCode)
+                };
+
+                //Execute the new branch stored procedure
+                dbManager.ExecuteStoredProcedure("new_branch_sp", parameters);
+
+                //Show success message
+                MessageBox.Show("Created branch successfully.");
+
+                //Load the SQL query from SQL file for Branch table
+                string query = dbManager.LoadQueryFromFile("get_branch_data.sql");
+
+                //Display updated client table in DataGridView by executing the query loaded
+                dataGridViewBranch.DataSource = dbManager.ExecuteQuery(query);
+
+                //Clears and resets the controls and branch, so the user's next action in the form doesn't get affected
+                ClearControlsBranch();
+            }
+            //Handle any errors that occur during registration or displaying the table
+            catch (Exception ex)
+            {
+                //Output exception message
+                MessageBox.Show($"Error with creating or updating Branch data:\n {ex.Message}");
+            }
+        }
+
+        //Occurs user clicks clear button in open branch page
+        private void btnOBClear_Click(object sender, EventArgs e)
+        {
+            ClearControlsBranch(); //Clears text fields
+        }
+
         //CLIENT TASKS
+
+        //When button to select register client is clicked, register client panel becomes visible
+        private void btnSelectRegisterClient_Click(object sender, EventArgs e)
+        {
+            //Visibility of client menu panels
+            panelRegisterClient.Visible = true;
+            panelDeleteClient.Visible = false;
+            panelClientSelection.Visible = false;
+        }
+
+        //When button to select delete client is clicked, delete client panel becomes visible
+        private void btnSelectDeleteClient_Click(object sender, EventArgs e)
+        {
+            //Visibility of client menu panels
+            panelRegisterClient.Visible = false;
+            panelDeleteClient.Visible = true;
+            panelClientSelection.Visible = false;
+        }
+
+        //When button to go to register client is clicked, register client panel becomes visible
+        private void btnGoToRegisterClient_Click(object sender, EventArgs e)
+        {
+            //Visibility of client menu panels
+            panelRegisterClient.Visible = true;
+            panelDeleteClient.Visible = false;
+            panelClientSelection.Visible = false;
+        }
+
+        //When button to go to delete client is clicked, delete client panel becomes visible
+        private void btnGoToDeleteClient_Click(object sender, EventArgs e)
+        {
+            //Visibility of client menu panels
+            panelRegisterClient.Visible = false;
+            panelDeleteClient.Visible = true;
+            panelClientSelection.Visible = false;
+        }
 
         //Method - Clears controls for Client form so that previous information won't affect new actions
         public void ClearControlsClient()
@@ -715,42 +809,6 @@ namespace CSharp
                 //Output exception message
                 MessageBox.Show($"Error with deleting Client data:\n {ex.Message}");
             }
-        }
-
-        //When button to select register client is clicked, register client panel becomes visible
-        private void btnSelectRegisterClient_Click(object sender, EventArgs e)
-        {
-            //Visibility of client menu panels
-            panelRegisterClient.Visible = true;
-            panelDeleteClient.Visible = false;
-            panelClientSelection.Visible = false;
-        }
-
-        //When button to select delete client is clicked, delete client panel becomes visible
-        private void btnSelectDeleteClient_Click(object sender, EventArgs e)
-        {
-            //Visibility of client menu panels
-            panelRegisterClient.Visible = false;
-            panelDeleteClient.Visible = true;
-            panelClientSelection.Visible = false;
-        }
-
-        //When button to go to register client is clicked, register client panel becomes visible
-        private void btnGoToRegisterClient_Click(object sender, EventArgs e)
-        {
-            //Visibility of client menu panels
-            panelRegisterClient.Visible = true;
-            panelDeleteClient.Visible = false;
-            panelClientSelection.Visible = false;
-        }
-
-        //When button to go to delete client is clicked, delete client panel becomes visible
-        private void btnGoToDeleteClient_Click(object sender, EventArgs e)
-        {
-            //Visibility of client menu panels
-            panelRegisterClient.Visible = false;
-            panelDeleteClient.Visible = true;
-            panelClientSelection.Visible = false;
         }
 
     }
