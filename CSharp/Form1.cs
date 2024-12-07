@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Tracing;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -280,6 +281,12 @@ namespace CSharp
                 else
                 {
                     column.ReadOnly = true;
+
+                    //Set default colours for read-only column so it's different from updatable columns
+                    column.DefaultCellStyle.BackColor = Color.FromArgb(0, 64, 64); //Set background colour
+                    column.DefaultCellStyle.ForeColor = Color.FromArgb(218, 226, 228); //Set font colour
+                    column.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 64, 64); //Set selection background colour
+                    column.DefaultCellStyle.SelectionForeColor = Color.FromArgb(218, 226, 228); //Set selection font colour
                 }
             }
         }
@@ -527,6 +534,12 @@ namespace CSharp
                 else
                 {
                     column.ReadOnly = true;
+
+                    //Set default colours for read-only column so it's different from updatable columns
+                    column.DefaultCellStyle.BackColor = Color.FromArgb(0, 64, 64); //Set background colour
+                    column.DefaultCellStyle.ForeColor = Color.FromArgb(218, 226, 228); //Set font colour
+                    column.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 64, 64); //Set selection background colour
+                    column.DefaultCellStyle.SelectionForeColor = Color.FromArgb(218, 226, 228); //Set selection font colour
                 }
             }
         }
@@ -810,6 +823,5 @@ namespace CSharp
                 MessageBox.Show($"Error with deleting Client data:\n {ex.Message}");
             }
         }
-
     }
 }
