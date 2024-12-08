@@ -1,0 +1,15 @@
+Steps to run the app:
+
+- Download Oracle Client for Microsoft Tools: https://www.oracle.com/database/technologies/net-downloads.html
+
+- Open CSharp.sln file in /DreamHome_RealEstate/CSharp folder
+
+- In Solution Explorer, right click on References and add Oracle.ManagedDataAccess as a reference
+
+- Open Visual Studio terminal and enter this command: dotnet restore
+
+- Navigate to /DreamHome_RealEstate/CSharp/bin/debug folder and open the .env file in a text editor
+
+- Replace DB_USERNAME and DB_PASSWORD values with your own credentials and save the file
+
+- Restart the CSharp.sln file and you should be able to run the application without any issues.
